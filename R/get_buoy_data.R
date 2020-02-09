@@ -1,8 +1,12 @@
 #' Gets bouy data from nbdc
 #'
-#' @param buoyid Character vector. Vector of buoy id names
-#' @param year Numeric vector. Years of data to pull
+#' Grabs zipped annual files, unzips and saves as csv files
+#'
+#'@param buoyid Character vector. Vector of buoy id names
+#'@param year Numeric vector. Years of data to pull
 #'@param outDir Character string. Full path to where output should be written
+#'
+#'@return csv files written
 #'
 #'@export
 #'

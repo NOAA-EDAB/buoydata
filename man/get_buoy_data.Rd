@@ -13,6 +13,9 @@ get_buoy_data(buoyid = "bzbm3", year, outDir)
 
 \item{outDir}{Character string. Full path to where output should be written}
 }
+\value{
+csv files written
+}
 \description{
-Gets bouy data from nbdc
+Grabs zipped annual files, unzips and saves as csv files
 }
