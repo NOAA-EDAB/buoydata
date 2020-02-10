@@ -11,7 +11,7 @@
 #'
 #'@examples
 #'\dontrun{
-#'get_buoy_data(buoyid="bzbm3",year = 200:2010,outDir= here::here("output"))
+#'get_buoy_data(buoyid="bzbm3",year = 2000:2010,outDir= here::here("output"))
 #'
 #'}
 #'
