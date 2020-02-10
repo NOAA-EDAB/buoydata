@@ -13,7 +13,7 @@ by National Buoy Data Center
 ## Installation
 
 ``` r
-remotes::install_github("nbdcbuoy")
+remotes::install_github("andybeet/nbdcbuoy")
 ```
 
 ## Example

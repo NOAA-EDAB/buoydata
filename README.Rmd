@@ -21,7 +21,7 @@ The goal of nbdcbuoy is to easily download and process buoy data hosted by Natio
 ## Installation
 
 ``` r
-remotes::install_github("nbdcbuoy")
+remotes::install_github("andybeet/nbdcbuoy")
 ```
 
 ## Example
