@@ -4,14 +4,14 @@
 \alias{combine_buoy_data}
 \title{Combine annual buoy data files}
 \usage{
-combine_buoy_data(buoyid = "bzbm3", variable, inDir)
+combine_buoy_data(buoyid, variable, inDir)
 }
 \arguments{
 \item{buoyid}{Character vector. Vector of buoy id names}
 
 \item{variable}{Character string. Name of the variable to pull}
 
-\item{inDir}{Character string. Full path to where annual files are located}
+\item{inDir}{Character string. Full path to the buoy folder. Same as outDir in \code{get_buoy_data}}
 }
 \value{
 dataframe (nx4)
@@ -22,4 +22,11 @@ dataframe (nx4)
 }
 \description{
 All files available for a buoy are concatenated over time. Caution: some variables have changed in name over time
+}
+\examples{
+\dontrun{
+combine_buoy_data(buoyid="bzbm3",variable = "WTMP",inDir= here::here("output"))
+
+}
+
 }

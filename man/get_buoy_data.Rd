@@ -4,7 +4,7 @@
 \alias{get_buoy_data}
 \title{Gets bouy data from nbdc}
 \usage{
-get_buoy_data(buoyid = "bzbm3", year, outDir)
+get_buoy_data(buoyid, year, outDir)
 }
 \arguments{
 \item{buoyid}{Character vector. Vector of buoy id names}
@@ -18,4 +18,12 @@ csv files written
 }
 \description{
 Grabs zipped annual files, unzips and saves as csv files
+This function will create a folder on your machine and write csv files to it.
+}
+\examples{
+\dontrun{
+get_buoy_data(buoyid="bzbm3",year = 200:2010,outDir= here::here("output"))
+
+}
+
 }
