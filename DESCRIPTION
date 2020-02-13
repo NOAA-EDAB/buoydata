@@ -12,6 +12,7 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
     readr,
-    downloader
+    downloader,
+    dplyr
 Suggests:
     here
