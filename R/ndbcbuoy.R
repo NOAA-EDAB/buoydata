@@ -1,4 +1,4 @@
-#' nbdcbuoy: Extract buoy data from nbdc
+#' ndbcbuoy: Extract buoy data from ndbc
 #'
 #'Tools to aid in extraction of data from the nbdc website
 #'
@@ -7,9 +7,9 @@
 #'\item functions to manipulate the data, aggregate the data
 #'}
 #'
-#'To learn more about using \code{nbdcbuoy} click the index below
+#'To learn more about using \code{ndbcbuoy} click the index below
 #'
 #'
 #' @docType package
-#' @name nbdcbuoy
+#' @name ndbcbuoy
 NULL

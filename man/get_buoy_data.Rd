@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_buoy_data.R
 \name{get_buoy_data}
 \alias{get_buoy_data}
-\title{Gets bouy data from nbdc}
+\title{Gets bouy data from ndbc}
 \usage{
 get_buoy_data(buoyid, year, outDir)
 }

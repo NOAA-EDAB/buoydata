@@ -1,6 +1,6 @@
 #' buoyData: List of stations
 #'
-#' A complete list of buoys listed on nbdc website along with buoy specific features such as location and data range.
+#' A complete list of buoys listed on ndbc website along with buoy specific features such as location and data range.
 #'
 #' @format A data frame of several elements
 #' \describe{
@@ -11,5 +11,5 @@
 #'}
 #'
 #'
-#'@source National Data Buoy Center: nbdc.noaa.gov
+#'@source National Data Buoy Center: \url{ndbc.noaa.gov}
 "buoyData"

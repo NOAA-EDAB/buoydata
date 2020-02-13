@@ -1,4 +1,4 @@
-#' Gets bouy data from nbdc
+#' Gets bouy data from ndbc
 #'
 #' Grabs zipped annual files, unzips and saves as csv files
 #' This function will create a folder on your machine and write csv files to it.

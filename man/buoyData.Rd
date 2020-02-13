@@ -12,12 +12,12 @@
     \item{nYears}{Number of years of data}
 }}
 \source{
-National Data Buoy Center: nbdc.noaa.gov
+National Data Buoy Center: \url{ndbc.noaa.gov}
 }
 \usage{
 buoyData
 }
 \description{
-A complete list of buoys listed on nbdc website along with buoy specific features such as location and data range.
+A complete list of buoys listed on ndbc website along with buoy specific features such as location and data range.
 }
 \keyword{datasets}
