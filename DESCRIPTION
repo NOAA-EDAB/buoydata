@@ -1,5 +1,5 @@
-Package: nbdcbuoy
-Title: Pulls and sorts buoy data from nbdc
+Package: ndbcbuoy
+Title: Pulls and sorts buoy data from ndbc
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Andy",family = "Beet",
