@@ -5,6 +5,8 @@
 #'
 #'@return lazy data
 #'
+library(magrittr)
+
 
 get_buoy_names <- function(){
 
@@ -31,6 +33,8 @@ get_buoy_names <- function(){
     dplyr::distinct()
 
 
-  save(buoyData,file="data/buoyData.RData")
+  return(buoyData)
 
 }
+
+
