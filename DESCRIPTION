@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Andy",family = "Beet",
            role = c("aut", "cre"),
            email = "andrew.beet@noaa.gov")
-Description: What the package does (one paragraph).
+Description: Extracts all historical data from website and creates a list of all stations with their lat, long, name and data range
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
@@ -15,4 +15,6 @@ Imports:
     downloader,
     dplyr
 Suggests:
-    here
+    here,
+    xml2,
+    sf
