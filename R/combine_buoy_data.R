@@ -12,6 +12,9 @@
 #'\item{DAY}{Day}
 #'\item{"Variable"}{The name of the variable passed to the function}
 #'
+#'@importFrom magrittr "%>%"
+#'
+#'
 #'@examples
 #'\dontrun{
 #'combine_buoy_data(buoyid="bzbm3",variable = "WTMP",inDir= here::here("output"))
@@ -27,6 +30,7 @@ combine_buoy_data <- function(buoyid,variable,inDir){
  buoyid <- tolower(buoyid)
  buoyDir <- paste0(inDir,"/",buoyid)
  annualFiles <- list.files(buoyDir)
+ annualFiles <- annualFiles[grepl("*.csv",annualFiles)]
 
 
  masterBuoyData <- data.frame()
@@ -36,7 +40,12 @@ combine_buoy_data <- function(buoyid,variable,inDir){
    fileParts <- strsplit(afile,"\\.")
    year <- strsplit(fileParts[[1]][1],"_")[[1]][2]
    message("Processing year = ",year)
-   fData <- readr::read_csv(paste0(buoyDir,"/",afile),col_types = readr::cols())
+   fData <- read.csv(paste0(buoyDir,"/",afile),stringsAsFactors = FALSE)
+   # check for unit headers in first row
+   if (any(grepl("#*",fData[1,]))) {
+      fData <- fData[-1,]
+   }
+
 
    # fix for Year column. Early years YYY later Years YY
    dataNames <- colnames(fData)
@@ -44,13 +53,20 @@ combine_buoy_data <- function(buoyid,variable,inDir){
 
    fileData <- fData[,c(year,"MM","DD",variable)]
    names(fileData) <- c("YEAR","MONTH","DAY",variable)
+   fileData$YEAR <- as.numeric(fileData$YEAR)
+   fileData$YEAR[fileData$YEAR < 1999] <- fileData$YEAR[fileData$YEAR < 1999] + 1900
+   fileData$MONTH <- as.numeric(fileData$MONTH)
+   fileData$DAY <- as.numeric(fileData$DAY)
+   fileData[[variable]] <- as.numeric(fileData[[variable]])
+   fileData[[variable]][fileData[[variable]] == 999] <- NA
 
+   fileData <- fileData %>% dplyr::mutate(DATE = lubridate::ymd(paste0(YEAR,sprintf(paste0("%02d"),MONTH),sprintf(paste0("%02d"),DAY))))
 
    masterBuoyData <- rbind(masterBuoyData,fileData)
 
  }
 
- return(masterBuoyData)
+ return(dplyr::as_tibble(masterBuoyData))
 
 
 }
