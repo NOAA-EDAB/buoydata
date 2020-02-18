@@ -63,15 +63,10 @@ get_buoy_data <- function(buoyid,year,outDir){
     # if a file is present (they are all gz files) then open a connecton
     con <- gzfile(destfile)
     open(con)
-
-    # read in the header, and split
-    headers <- readLines(con,n=1)
-    headers <- strsplit(substr(headers,2,nchar(headers)),"\\s+")
     # then read content inside zipped file
-    buoyData <- read.table(con)
-    # assign yeaders to data table
-    colnames(buoyData) <- headers[[1]]
+    buoyData <- read.delim(con,sep="")
     close(con)
+
     # remove zipped file
     file.remove(destfile)
 
