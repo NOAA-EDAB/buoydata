@@ -13,7 +13,9 @@ RoxygenNote: 6.1.1
 Imports: 
     readr,
     downloader,
-    dplyr
+    dplyr,
+    lubridate,
+    magrittr
 Suggests:
     here,
     xml2,

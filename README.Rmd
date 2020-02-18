@@ -8,6 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
+  fig.path = "man/figures/README-",
   out.width = "100%"
 )
 ```
@@ -26,15 +27,30 @@ remotes::install_github("andybeet/ndbcbuoy")
 
 ## Example
 
-This is a basic example which shows you how pull and process data from a single buoy located in [Woods Hole](https://www.ndbc.noaa.gov/station_history.php?station=bzbm3), buoy id = "bzbm3"
+Find all buoys located between latitude [41,43] and longitude [-71,-67] with a time series of at least 20 years. Then pull and process data from a single buoy. 
 
-``` r
+``` {r, eval=T}
 library(ndbcbuoy)
+library(magrittr)
 
-# get the data
-get_buoy_data(buoyid="bzbm3",year=2000:2020,outDir=here::here("output"))
+ndbcbuoy::buoyData %>% dplyr::filter(LAT > 41,LAT < 43) %>%
+  dplyr::filter(LON > -71, LON < -69) %>%
+  dplyr::filter(nYEARS >= 20)
+```
+``` r
+# get the data for buoy 44013
+get_buoy_data(buoyid="44013",year=1984:2019,outDir=here::here("output"))
 
-# process Sea surface temperature (celcius) into one large data frame
-data <- combine_buoy_data(buoyid = "bzbm3",variable="WTMP",inDir = here::here("output"))
+# process sea surface temperature (celcius) into one large data frame
+data <- combine_buoy_data(buoyid = "44013",variable="WTMP",inDir = here::here("output"))
+```
+Then plot the data
+
+```{r plotData, echo = T,eval=F}
+ ggplot2::ggplot(data) +
+   ggplot2::geom_line(ggplot2::aes(x=DATE,y=WTMP)) + 
+   ggplot2::ylab("Sea Surface Temp (Celcius)") +
+   ggplot2::xlab("")
 ```
 
+<img src="man/figures/WTMP44013.png" align="center" />
