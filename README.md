@@ -54,4 +54,4 @@ Then plot the data
    ggplot2::xlab("")
 ```
 
-<img src="man/figures/WTMP44013.png" align="center" />
+<img src="man/figures/WTMP44013.png" align="center" width="100%"/>
