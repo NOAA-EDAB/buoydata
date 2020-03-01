@@ -1,4 +1,6 @@
-#' using the buoy names we call the buoy webpage and pick out common nmae, location
+#' Grabs station info for all stations
+#'
+#' Uses output fron \code{get_buoy_names} and then parse each of the buoys webpages to extract common name, location, etc
 #'
 #'@param buoyData Data frame. Output from get_buoy_names
 #'
@@ -78,7 +80,7 @@ get_buoy_location <- function(buoyData){
 
   }
   buoyData <- buoyTable
-  save(buoyData,file="data/buoyData.RData")
+
   return(buoyData)
 }
 
