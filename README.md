@@ -9,8 +9,8 @@
 
 The goal of ndbcbuoy is to easily download and process buoy data hosted
 by National Data Buoy Center. Note: the
-[rnoaa](https://github.com/ropensci/rnoaa) package has functions to get
-buoy data also. The difference is that only one years worth of data can
+[rnoaa](https://github.com/ropensci/rnoaa) package also has functions to
+get buoy data. The difference is that only one years worth of data can
 be downloaded at any time from a single buoy.
 
 `ndbcbuoy` downloads multiple years and stitches all years data together
