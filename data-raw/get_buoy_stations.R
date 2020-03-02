@@ -25,14 +25,16 @@ get_buoy_stations <- function(){
   owners <- read.delim(paste0(dataPath,"station_owners.txt"),sep="|",stringsAsFactors = F,header = F)
   owners <- owners[c(-1,-2),] # first row is empty. Awful text file formatting
   names(owners) <- c("OWNER","OWNERNAME","COUNTRYCODE")
-  owners <- owners %>% dplyr::mutate(OWNER = sub("\\s$","",OWNER))
+  newOwners <- owners %>% dplyr::mutate(OWNER = trimws(OWNER)) %>%
+    dplyr::mutate(OWNERNAME = trimws(OWNERNAME)) %>%
+    dplyr::mutate(COUNTRYCODE = trimws(COUNTRYCODE))
 
   # now select columns TTYPE, TIMEXONE, OWNER from table and join with scaped data
-  newData <- table %>% dplyr::filter(X..STATION_ID %in% ndbcbuoy::buoyData$ID) %>%
+  newData <- stations %>% dplyr::filter(X..STATION_ID %in% ndbcbuoy::buoyData$ID) %>%
     dplyr::select(X..STATION_ID,TTYPE,TIMEZONE,OWNER) %>%
     dplyr::rename(ID = X..STATION_ID)
 
-  newData <- dplyr::left_join(newData,owners,by="OWNER")# adds the name and country
+  newData <- dplyr::left_join(newData,newOwners,by="OWNER")# adds the name and country
 
   # now get buoy names and stations from web scraping
   buoyData <- get_buoy_names()
