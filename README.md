@@ -8,7 +8,15 @@
 <!-- badges: end -->
 
 The goal of ndbcbuoy is to easily download and process buoy data hosted
-by National Data Buoy Center
+by National Data Buoy Center. Note: the
+[rnoaa](https://github.com/ropensci/rnoaa) package has functions to get
+buoy data also. The difference is that only one years worth of data can
+be downloaded at any time from a single buoy.
+
+`ndbcbuoy` downloads multiple years and stitches all years data together
+in a single data frame. In addition the lazily loaded station
+description data provided with the package combines many more attributes
+by which to filter.
 
 ## Installation
 
@@ -32,9 +40,9 @@ ndbcbuoy::buoyData %>% dplyr::filter(LAT > 41,LAT < 43) %>%
 #>      ID   Y1   YN nYEARS    LAT     LON                      STATION_LOC
 #> 1 44013 1984 2019     36 42.346 -70.651 BOSTON 16 NM East of Boston, MA.
 #> 2 iosn3 1984 2019     36 42.967 -70.623              Isle of Shoals, NH.
-#>   STATION_NAME
-#> 1         <NA>
-#> 2         <NA>
+#>   STATION_NAME             TTYPE TIMEZONE OWNER OWNERNAME COUNTRYCODE
+#> 1         <NA> 3-meter foam buoy        E     N      NDBC          US
+#> 2         <NA>     C-MAN Station        E     N      NDBC          US
 ```
 
 ``` r
