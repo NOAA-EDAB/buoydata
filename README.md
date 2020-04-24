@@ -1,19 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ndbcbuoy
+# buoydata
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of ndbcbuoy is to easily download and process buoy data hosted
+The goal of buoydata is to easily download and process buoy data hosted
 by National Data Buoy Center. Note: the
 [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to
 get buoy data. The difference is that only one years worth of data can
 be downloaded at any time from a single buoy.
 
-`ndbcbuoy` downloads multiple years and stitches all years data together
+`buoydata` downloads multiple years and stitches all years data together
 in a single data frame. In addition the lazily loaded station
 description data provided with the package combines many more attributes
 by which to filter.
@@ -21,7 +21,7 @@ by which to filter.
 ## Installation
 
 ``` r
-remotes::install_github("andybeet/ndbcbuoy")
+remotes::install_github("andybeet/buoydata")
 ```
 
 ## Example
@@ -31,10 +31,10 @@ Find all buoys located between latitude \[41,43\] and longitude
 process data from a single buoy.
 
 ``` r
-library(ndbcbuoy)
+library(buoydata)
 library(magrittr)
 
-ndbcbuoy::buoyData %>% dplyr::filter(LAT > 41,LAT < 43) %>%
+buoydata::buoyDataWorld %>% dplyr::filter(LAT > 41,LAT < 43) %>%
   dplyr::filter(LON > -71, LON < -69) %>%
   dplyr::filter(nYEARS >= 20)
 #>      ID   Y1   YN nYEARS    LAT     LON                      STATION_LOC

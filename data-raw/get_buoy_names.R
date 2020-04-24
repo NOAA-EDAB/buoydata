@@ -5,7 +5,6 @@
 #'
 #'@return lazy data
 #'
-library(magrittr)
 
 
 get_buoy_names <- function(){

@@ -10,7 +10,8 @@
 #'This is the main file to create the lazy data exported with the package.
 #'
 library(magrittr)
-
+source(here::here("data-raw","get_buoy_names.R"))
+source(here::here("data-raw","get_buoy_location.R"))
 
 get_buoy_stations <- function(){
 
@@ -41,10 +42,11 @@ get_buoy_stations <- function(){
   buoyData <- get_buoy_location(buoyData)
 
   # now add additional fields to dataframe
-  buoyData <- dplyr::left_join(buoyData,newData,by="ID")
-  save(buoyData,file="data/buoyData.RData")
+  buoyDataWorld <- dplyr::left_join(buoyData,newData,by="ID")
 
-  return(buoyData)
+  save(buoyDataWorld,file="data/buoyDataWorld.RData")
+
+  return(buoyDataWorld)
 
 
 

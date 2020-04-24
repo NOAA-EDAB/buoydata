@@ -12,19 +12,19 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# ndbcbuoy
+# buoydata
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ndbcbuoy is to easily download and process buoy data hosted by National Data Buoy Center. Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that only one years worth of data can be downloaded at any time from a single buoy. 
+The goal of buoydata is to easily download and process buoy data hosted by National Data Buoy Center. Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that only one years worth of data can be downloaded at any time from a single buoy. 
 
-`ndbcbuoy` downloads multiple years and stitches all years data together in a single data frame. In addition the lazily loaded station description data provided with the package combines many more attributes by which to filter. 
+`buoydata` downloads multiple years and stitches all years data together in a single data frame. In addition the lazily loaded station description data provided with the package combines many more attributes by which to filter. 
 
 ## Installation
 
 ``` r
-remotes::install_github("andybeet/ndbcbuoy")
+remotes::install_github("andybeet/buoydata")
 ```
 
 ## Example
@@ -32,13 +32,14 @@ remotes::install_github("andybeet/ndbcbuoy")
 Find all buoys located between latitude [41,43] and longitude [-71,-67] with a time series of at least 20 years. Then pull and process data from a single buoy. 
 
 ``` {r, eval=T}
-library(ndbcbuoy)
+library(buoydata)
 library(magrittr)
 
-ndbcbuoy::buoyData %>% dplyr::filter(LAT > 41,LAT < 43) %>%
+buoydata::buoyDataWorld %>% dplyr::filter(LAT > 41,LAT < 43) %>%
   dplyr::filter(LON > -71, LON < -69) %>%
   dplyr::filter(nYEARS >= 20)
 ```
+
 ``` r
 # get the data for buoy 44013
 get_buoy_data(buoyid="44013",year=1984:2019,outDir=here::here("output"))

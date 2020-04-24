@@ -1,15 +1,15 @@
-#' buoyData: List of stations
+#' buoydata: Extract buoy data from ndbc
 #'
-#' A complete list of buoys listed on ndbc website along with buoy specific features such as location and data range.
+#'Tools to aid in extraction of data from the nbdc website
 #'
-#' @format A data frame of several elements
-#' \describe{
-#'     \item{ID}{Buoy ID name}
-#'     \item{Y1}{First year of data}
-#'     \item{YN}{Last year of data}
-#'     \item{nYears}{Number of years of data}
+#'\itemize{
+#'\item Get_ functions to get data.
+#'\item functions to manipulate the data, aggregate the data
 #'}
 #'
+#'To learn more about using \code{buoydata} click the index below
 #'
-#'@source National Data Buoy Center: \url{ndbc.noaa.gov}
-"buoyData"
+#'
+#' @docType package
+#' @name buoydata
+NULL
