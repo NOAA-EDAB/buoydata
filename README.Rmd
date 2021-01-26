@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 # buoydata
 
 <!-- badges: start -->
+![deploy to github pages](https://github.com/NOAA-EDAB/buoydata/workflows/deploy%20to%20github%20pages/badge.svg)
+![Install on windows](https://github.com/NOAA-EDAB/buoydata/workflows/Install%20on%20windows/badge.svg)
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data hosted by National Data Buoy Center. Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that (in [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data can be downloaded at any time from a single buoy. 
