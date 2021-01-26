@@ -1,12 +1,12 @@
 Package: buoydata
 Title: Pulls and sorts buoy data from ndbc
-Version: 0.0.0.9000
+Version: 0.1
 Authors@R: 
     person(given = "Andy",family = "Beet",
            role = c("aut", "cre"),
            email = "andrew.beet@noaa.gov")
 Description: Extracts all historical data from website and creates a list of all stations with their lat, long, name and data range
-License: What license it uses
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
