@@ -9,6 +9,7 @@
 pages](https://github.com/NOAA-EDAB/buoydata/workflows/deploy%20to%20github%20pages/badge.svg)
 ![Install on
 windows](https://github.com/NOAA-EDAB/buoydata/workflows/Install%20on%20windows/badge.svg)
+![gitleaks](https://github.com/NOAA-EDAB/buoydata/workflows/gitleaks/badge.svg)
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data
