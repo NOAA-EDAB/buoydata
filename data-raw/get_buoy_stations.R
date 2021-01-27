@@ -30,21 +30,23 @@ get_buoy_stations <- function(){
     dplyr::mutate(OWNERNAME = trimws(OWNERNAME)) %>%
     dplyr::mutate(COUNTRYCODE = trimws(COUNTRYCODE))
 
+  # Get names of buoys for which there are data
+  buoyData <- get_buoy_names()
   # now select columns TTYPE, TIMEXONE, OWNER from table and join with scaped data
-  newData <- stations %>% dplyr::filter(X..STATION_ID %in% ndbcbuoy::buoyData$ID) %>%
+  newData <- stations %>% dplyr::filter(X..STATION_ID %in% buoyData$ID) %>%
     dplyr::select(X..STATION_ID,TTYPE,TIMEZONE,OWNER) %>%
     dplyr::rename(ID = X..STATION_ID)
 
   newData <- dplyr::left_join(newData,newOwners,by="OWNER")# adds the name and country
 
   # now get buoy names and stations from web scraping
-  buoyData <- get_buoy_names()
+  #buoyData <- get_buoy_names()
   buoyData <- get_buoy_location(buoyData)
 
   # now add additional fields to dataframe
   buoyDataWorld <- dplyr::left_join(buoyData,newData,by="ID")
 
-  save(buoyDataWorld,file="data/buoyDataWorld.RData")
+  usethis::use_data(buoyDataWorld,overwrite = T)
 
   return(buoyDataWorld)
 
