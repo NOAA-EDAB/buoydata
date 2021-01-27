@@ -31,6 +31,7 @@ get_buoy_names <- function(){
     dplyr::select(-YEAR) %>%
     dplyr::distinct()
 
+  file.create(here::here("data-raw","datapull.txt"))
 
   return(buoyData)
 
