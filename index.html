@@ -87,9 +87,9 @@
 <span class="co">#&gt;      ID   Y1   YN nYEARS    LAT     LON                      STATION_LOC</span>
 <span class="co">#&gt; 1 44013 1984 2019     36 42.346 -70.651 BOSTON 16 NM East of Boston, MA.</span>
 <span class="co">#&gt; 2 iosn3 1984 2019     36 42.967 -70.623              Isle of Shoals, NH.</span>
-<span class="co">#&gt;   STATION_NAME             TTYPE TIMEZONE OWNER OWNERNAME COUNTRYCODE</span>
-<span class="co">#&gt; 1         &lt;NA&gt; 3-meter foam buoy        E     N      NDBC          US</span>
-<span class="co">#&gt; 2         &lt;NA&gt;     C-MAN Station        E     N      NDBC          US</span></code></pre></div>
+<span class="co">#&gt;   STATION_NAME                       TTYPE TIMEZONE OWNER OWNERNAME COUNTRYCODE</span>
+<span class="co">#&gt; 1         &lt;NA&gt; 2.1-meter ionomer foam buoy        E     N      NDBC          US</span>
+<span class="co">#&gt; 2         &lt;NA&gt;               C-MAN Station        E     N      NDBC          US</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># get the data for buoy 44013</span>
 <span class="fu"><a href="reference/get_buoy_data.html">get_buoy_data</a></span><span class="op">(</span>buoyid<span class="op">=</span><span class="st">"44013"</span>,year<span class="op">=</span><span class="fl">1984</span><span class="op">:</span><span class="fl">2019</span>,outDir<span class="op">=</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"output"</span><span class="op">)</span><span class="op">)</span>
