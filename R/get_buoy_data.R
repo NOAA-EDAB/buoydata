@@ -71,7 +71,7 @@ get_buoy_data <- function(buoyid,year,outDir){
     file.remove(destfile)
 
     # write the buoy data as a csv file
-    readr::write_csv(buoyData,path = paste0(outFolder,"/",buoyid,"_",ay,".csv"),col_names = TRUE)
+    readr::write_csv(buoyData,file = paste0(outFolder,"/",buoyid,"_",ay,".csv"),col_names = TRUE)
 
   }
 
