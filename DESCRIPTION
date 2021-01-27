@@ -20,3 +20,5 @@ Suggests:
     here,
     xml2,
     sf
+Depends: 
+    R (>= 2.10)

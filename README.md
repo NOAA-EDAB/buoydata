@@ -47,9 +47,9 @@ buoydata::buoyDataWorld %>% dplyr::filter(LAT > 41,LAT < 43) %>%
 #>      ID   Y1   YN nYEARS    LAT     LON                      STATION_LOC
 #> 1 44013 1984 2019     36 42.346 -70.651 BOSTON 16 NM East of Boston, MA.
 #> 2 iosn3 1984 2019     36 42.967 -70.623              Isle of Shoals, NH.
-#>   STATION_NAME             TTYPE TIMEZONE OWNER OWNERNAME COUNTRYCODE
-#> 1         <NA> 3-meter foam buoy        E     N      NDBC          US
-#> 2         <NA>     C-MAN Station        E     N      NDBC          US
+#>   STATION_NAME                       TTYPE TIMEZONE OWNER OWNERNAME COUNTRYCODE
+#> 1         <NA> 2.1-meter ionomer foam buoy        E     N      NDBC          US
+#> 2         <NA>               C-MAN Station        E     N      NDBC          US
 ```
 
 ``` r
