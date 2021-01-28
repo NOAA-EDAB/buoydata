@@ -64,6 +64,14 @@ Then plot the data
 <img src="man/figures/WTMP44013.png" align="center" width="100%"/>
 
 
+## Contact
+
+| [andybeet](https://github.com/andybeet)        
+| ----------------------------------------------------------------------------------------------- 
+| [![](https://avatars1.githubusercontent.com/u/22455149?s=100&v=4)](https://github.com/andybeet) | 
+
+
+
 #### Legal disclaimer
 
 *This repository is a scientific product and is not official
