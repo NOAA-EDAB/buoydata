@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pulls and sorts buoy data from ndbc • buoydata</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">buoydata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -59,65 +55,66 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="buoydata" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#buoydata" class="anchor"></a>buoydata</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="buoydata">buoydata<a class="anchor" aria-label="anchor" href="#buoydata"></a>
+</h1></div>
 <!-- badges: start -->
 <p><img src="https://github.com/NOAA-EDAB/buoydata/workflows/deploy%20to%20github%20pages/badge.svg" alt="deploy to github pages"><img src="https://github.com/NOAA-EDAB/buoydata/workflows/Install%20on%20windows/badge.svg" alt="Install on windows"><img src="https://github.com/NOAA-EDAB/buoydata/workflows/gitleaks/badge.svg" alt="gitleaks"><!-- badges: end --></p>
-<p>The goal of <code>buoydata</code> is to easily download and process buoy data hosted by National Data Buoy Center. Note: the <a href="https://github.com/ropensci/rnoaa">rnoaa</a> package also has functions to get buoy data. The difference is that (in <a href="https://github.com/ropensci/rnoaa">rnoaa</a>) only one years worth of data can be downloaded at any time from a single buoy.</p>
-<p><code>buoydata</code> downloads multiple years and stitches all years data together in a single data frame. In addition the lazily loaded station description data provided with the package combines many more attributes (than <a href="https://github.com/ropensci/rnoaa">rnoaa</a>) by which to filter.</p>
+<p>The goal of <code>buoydata</code> is to easily download and process buoy data hosted by National Data Buoy Center. Note: the <a href="https://github.com/ropensci/rnoaa" class="external-link">rnoaa</a> package also has functions to get buoy data. The difference is that (in <a href="https://github.com/ropensci/rnoaa" class="external-link">rnoaa</a>) only one years worth of data can be downloaded at any time from a single buoy.</p>
+<p><code>buoydata</code> downloads multiple years and stitches all years data together in a single data frame. In addition the lazily loaded station description data provided with the package combines many more attributes (than <a href="https://github.com/ropensci/rnoaa" class="external-link">rnoaa</a>) by which to filter.</p>
 <p><em>Date of most recent data pull: 2021-01-26</em></p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"andybeet/buoydata"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"andybeet/buoydata"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>Find all buoys located between latitude <br><span class="math display">41, 43</span><br> and longitude <br><span class="math display"> − 71,  − 67</span><br> with a time series of at least 20 years. Then pull and process data from a single buoy.</p>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>Find all buoys located between latitude [41,43] and longitude [-71,-67] with a time series of at least 20 years. Then pull and process data from a single buoy.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">buoydata</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-
-<span class="fu">buoydata</span><span class="fu">::</span><span class="va"><a href="reference/buoyDataWorld.html">buoyDataWorld</a></span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">LAT</span> <span class="op">&gt;</span> <span class="fl">41</span>,<span class="va">LAT</span> <span class="op">&lt;</span> <span class="fl">43</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">LON</span> <span class="op">&gt;</span> <span class="op">-</span><span class="fl">71</span>, <span class="va">LON</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">69</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">nYEARS</span> <span class="op">&gt;=</span> <span class="fl">20</span><span class="op">)</span>
-<span class="co">#&gt;      ID   Y1   YN nYEARS    LAT     LON                      STATION_LOC</span>
-<span class="co">#&gt; 1 44013 1984 2019     36 42.346 -70.651 BOSTON 16 NM East of Boston, MA.</span>
-<span class="co">#&gt; 2 iosn3 1984 2019     36 42.967 -70.623              Isle of Shoals, NH.</span>
-<span class="co">#&gt;   STATION_NAME                       TTYPE TIMEZONE OWNER OWNERNAME COUNTRYCODE</span>
-<span class="co">#&gt; 1         &lt;NA&gt; 2.1-meter ionomer foam buoy        E     N      NDBC          US</span>
-<span class="co">#&gt; 2         &lt;NA&gt;               C-MAN Station        E     N      NDBC          US</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">buoydata</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">buoydata</span><span class="fu">::</span><span class="va"><a href="reference/buoyDataWorld.html">buoyDataWorld</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">LAT</span> <span class="op">&gt;</span> <span class="fl">41</span>,<span class="va">LAT</span> <span class="op">&lt;</span> <span class="fl">43</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">LON</span> <span class="op">&gt;</span> <span class="op">-</span><span class="fl">71</span>, <span class="va">LON</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">69</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">nYEARS</span> <span class="op">&gt;=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      ID   Y1   YN nYEARS    LAT     LON                      STATION_LOC</span></span>
+<span><span class="co">#&gt; 1 44013 1984 2019     36 42.346 -70.651 BOSTON 16 NM East of Boston, MA.</span></span>
+<span><span class="co">#&gt; 2 iosn3 1984 2019     36 42.967 -70.623              Isle of Shoals, NH.</span></span>
+<span><span class="co">#&gt;   STATION_NAME                       TTYPE TIMEZONE OWNER OWNERNAME COUNTRYCODE</span></span>
+<span><span class="co">#&gt; 1         &lt;NA&gt; 2.1-meter ionomer foam buoy        E     N      NDBC          US</span></span>
+<span><span class="co">#&gt; 2         &lt;NA&gt;               C-MAN Station        E     N      NDBC          US</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># get the data for buoy 44013</span>
-<span class="fu"><a href="reference/get_buoy_data.html">get_buoy_data</a></span><span class="op">(</span>buoyid<span class="op">=</span><span class="st">"44013"</span>,year<span class="op">=</span><span class="fl">1984</span><span class="op">:</span><span class="fl">2019</span>,outDir<span class="op">=</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"output"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># process sea surface temperature (celcius) into one large data frame</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/combine_buoy_data.html">combine_buoy_data</a></span><span class="op">(</span>buoyid <span class="op">=</span> <span class="st">"44013"</span>,variable<span class="op">=</span><span class="st">"WTMP"</span>,inDir <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"output"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># get the data for buoy 44013</span></span>
+<span><span class="fu"><a href="reference/get_buoy_data.html">get_buoy_data</a></span><span class="op">(</span>buoyid<span class="op">=</span><span class="st">"44013"</span>,year<span class="op">=</span><span class="fl">1984</span><span class="op">:</span><span class="fl">2019</span>,outDir<span class="op">=</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"output"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># process sea surface temperature (celcius) into one large data frame</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/combine_buoy_data.html">combine_buoy_data</a></span><span class="op">(</span>buoyid <span class="op">=</span> <span class="st">"44013"</span>,variable<span class="op">=</span><span class="st">"WTMP"</span>,inDir <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"output"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Then plot the data</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">ggplot</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">+</span>
-   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">geom_line</span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">DATE</span>,y<span class="op">=</span><span class="va">WTMP</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">ylab</span><span class="op">(</span><span class="st">"Sea Surface Temp (Celcius)"</span><span class="op">)</span> <span class="op">+</span>
-   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">xlab</span><span class="op">(</span><span class="st">""</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">ggplot</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">+</span></span>
+<span>   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">geom_line</span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">DATE</span>,y<span class="op">=</span><span class="va">WTMP</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">ylab</span><span class="op">(</span><span class="st">"Sea Surface Temp (Celcius)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu">xlab</span><span class="op">(</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/WTMP44013.png" align="center" width="100%"></p>
 </div>
-<div id="contact" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contact" class="anchor"></a>Contact</h2>
+<div class="section level2">
+<h2 id="contact">Contact<a class="anchor" aria-label="anchor" href="#contact"></a>
+</h2>
 <table class="table">
+<colgroup><col width="100%"></colgroup>
 <thead><tr class="header">
-<th><a href="https://github.com/andybeet">andybeet</a></th>
+<th><a href="https://github.com/andybeet" class="external-link">andybeet</a></th>
 </tr></thead>
 <tbody><tr class="odd">
-<td><a href="https://github.com/andybeet"><img src="https://avatars1.githubusercontent.com/u/22455149?s=100&amp;v=4"></a></td>
+<td><a href="https://github.com/andybeet" class="external-link"><img src="https://avatars1.githubusercontent.com/u/22455149?s=100&amp;v=4"></a></td>
 </tr></tbody>
 </table>
-<div id="legal-disclaimer" class="section level4">
-<h4 class="hasAnchor">
-<a href="#legal-disclaimer" class="anchor"></a>Legal disclaimer</h4>
+<div class="section level4">
+<h4 id="legal-disclaimer">Legal disclaimer<a class="anchor" aria-label="anchor" href="#legal-disclaimer"></a>
+</h4>
 <p><em>This repository is a scientific product and is not official communication of the National Oceanic and Atmospheric Administration, or the United States Department of Commerce. All NOAA GitHub project code is provided on an ‘as is’ basis and the user assumes responsibility for its use. Any claims against the Department of Commerce or Department of Commerce bureaus stemming from the use of this GitHub project will be governed by all applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of a DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by DOC or the United States Government.</em></p>
 </div>
 </div>
@@ -126,29 +123,42 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing buoydata</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Andy Beet <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Andy Beet.</p>
+  <p></p>
+<p>Developed by Andy Beet.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>
@@ -156,6 +166,8 @@
 
   
 
+
+  
 
   </body>
 </html>
