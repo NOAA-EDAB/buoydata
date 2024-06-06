@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/index.html</loc>
   </url>
   <url>
-    <loc>/reference/buoyDataWorld.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/buoydata.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/reference/buoyDataWorld.html</loc>
   </url>
   <url>
-    <loc>/reference/combine_buoy_data.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/reference/buoydata-package.html</loc>
   </url>
   <url>
-    <loc>/reference/get_buoy_data.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/reference/combine_buoy_data.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://noaa-edab.github.io/buoydata/reference/get_buoy_data.html</loc>
+  </url>
+  <url>
+    <loc>https://noaa-edab.github.io/buoydata/reference/index.html</loc>
   </url>
 </urlset>
