@@ -1,4 +1,4 @@
-name: deploy to github pages
+name: gh-pages
 
 on:
   push:
@@ -13,11 +13,11 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-r@v2
 
-      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-pandoc@v2
 
       - name: Query dependencies
         run: |
@@ -40,11 +40,11 @@ jobs:
           remotes::install_deps(dependencies = TRUE, type="binary")
         shell: Rscript {0}
 
-      - name: Install pkgdown          
+      - name: Install pkgdown
         run: |
           install.packages("pkgdown", type = "binary")
         shell: Rscript {0}
-        
+
       - name: Install package
         run: R CMD INSTALL .
 
