@@ -7,7 +7,7 @@
 #'     \item{ID}{Buoy ID name}
 #'     \item{Y1}{First year of data}
 #'     \item{YN}{Last year of data}
-#'     \item{nYears}{Number of years of data}
+#'     \item{nYEARS}{Number of years of data}
 #'     \item{LAT}{Latitude}
 #'     \item{LON}{Longitude}
 #'     \item{STATION_LOC}{Description of station location}
