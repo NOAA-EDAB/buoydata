@@ -46,7 +46,10 @@ get_buoy_stations <- function(){
   # now add additional fields to dataframe
   buoyDataWorld <- dplyr::left_join(buoyData,newData,by="ID")
 
-  usethis::use_data(buoyDataWorld,overwrite = T)
+
+  file.create(here::here("data-raw","datapull.txt"))
+
+  #usethis::use_data(buoyDataWorld,overwrite = T)
 
   return(buoyDataWorld)
 
