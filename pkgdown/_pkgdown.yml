@@ -1,0 +1,18 @@
+url: https://noaa-edab.github.io/buoydata/
+
+template:
+ bootstrap: 5
+
+deploy:
+  install_metadata: true
+
+reference:
+- title: "Data"
+  desc: "Lazydata bundled along with the package"
+- contents:
+  - buoyDataWorld
+- title: "Functions"
+  desc: "Functions used to help user extract information from the bundled data"
+- contents:
+  - get_buoy_data
+  - combine_buoy_data
