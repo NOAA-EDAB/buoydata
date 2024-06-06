@@ -12,8 +12,6 @@
 #'\item{DAY}{Day}
 #'\item{"Variable"}{The name of the variable passed to the function}
 #'
-#'@importFrom magrittr "%>%"
-#'
 #'
 #'@examples
 #'\dontrun{
@@ -60,7 +58,8 @@ combine_buoy_data <- function(buoyid,variable,inDir){
    fileData[[variable]] <- as.numeric(fileData[[variable]])
    fileData[[variable]][fileData[[variable]] == 999] <- NA
 
-   fileData <- fileData %>% dplyr::mutate(DATE = lubridate::ymd(paste0(YEAR,sprintf(paste0("%02d"),MONTH),sprintf(paste0("%02d"),DAY))))
+   fileData <- fileData |>
+     dplyr::mutate(DATE = lubridate::ymd(paste0(YEAR,sprintf(paste0("%02d"),MONTH),sprintf(paste0("%02d"),DAY))))
 
    masterBuoyData <- rbind(masterBuoyData,fileData)
 

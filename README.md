@@ -5,11 +5,10 @@
 
 <!-- badges: start -->
 
-![deploy to github
-pages](https://github.com/NOAA-EDAB/buoydata/workflows/deploy%20to%20github%20pages/badge.svg)
-![Install on
-windows](https://github.com/NOAA-EDAB/buoydata/workflows/Install%20on%20windows/badge.svg)
-![gitleaks](https://github.com/NOAA-EDAB/buoydata/workflows/gitleaks/badge.svg)
+[![gh-pages](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml)
+[![R-CMD-check](https://github.com/NOAA-EDAB/buoydata/actions/workflows/check-standard.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/check-standard.yml)
+[![gitleaks](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FNOAA-EDAB%2Fbuoydata&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data
@@ -24,12 +23,12 @@ in a single data frame. In addition the lazily loaded station
 description data provided with the package combines many more attributes
 (than [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
 
-*Date of most recent data pull: 2021-01-26*
+*Date of most recent data pull: 2022-06-17*
 
 ## Installation
 
 ``` r
-remotes::install_github("andybeet/buoydata")
+remotes::install_github("NOAA-EDAB/buoydata")
 ```
 
 ## Example
@@ -40,10 +39,10 @@ process data from a single buoy.
 
 ``` r
 library(buoydata)
-library(magrittr)
 
-buoydata::buoyDataWorld %>% dplyr::filter(LAT > 41,LAT < 43) %>%
-  dplyr::filter(LON > -71, LON < -69) %>%
+buoydata::buoyDataWorld |> 
+  dplyr::filter(LAT > 41,LAT < 43) |> 
+  dplyr::filter(LON > -71, LON < -69) |> 
   dplyr::filter(nYEARS >= 20)
 #>      ID   Y1   YN nYEARS    LAT     LON                      STATION_LOC
 #> 1 44013 1984 2019     36 42.346 -70.651 BOSTON 16 NM East of Boston, MA.

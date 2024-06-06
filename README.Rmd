@@ -15,9 +15,10 @@ knitr::opts_chunk$set(
 # buoydata
 
 <!-- badges: start -->
-![deploy to github pages](https://github.com/NOAA-EDAB/buoydata/workflows/deploy%20to%20github%20pages/badge.svg)
-![Install on windows](https://github.com/NOAA-EDAB/buoydata/workflows/Install%20on%20windows/badge.svg)
-![gitleaks](https://github.com/NOAA-EDAB/buoydata/workflows/gitleaks/badge.svg)
+[![gh-pages](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml)
+[![R-CMD-check](https://github.com/NOAA-EDAB/buoydata/actions/workflows/check-standard.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/check-standard.yml)
+[![gitleaks](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FNOAA-EDAB%2Fbuoydata&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data hosted by National Data Buoy Center. Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that (in [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data can be downloaded at any time from a single buoy. 
@@ -29,7 +30,7 @@ The goal of `buoydata` is to easily download and process buoy data hosted by Nat
 ## Installation
 
 ``` r
-remotes::install_github("andybeet/buoydata")
+remotes::install_github("NOAA-EDAB/buoydata")
 ```
 
 ## Example
@@ -38,10 +39,10 @@ Find all buoys located between latitude [41,43] and longitude [-71,-67] with a t
 
 ``` {r, eval=T}
 library(buoydata)
-library(magrittr)
 
-buoydata::buoyDataWorld %>% dplyr::filter(LAT > 41,LAT < 43) %>%
-  dplyr::filter(LON > -71, LON < -69) %>%
+buoydata::buoyDataWorld |> 
+  dplyr::filter(LAT > 41,LAT < 43) |> 
+  dplyr::filter(LON > -71, LON < -69) |> 
   dplyr::filter(nYEARS >= 20)
 ```
 

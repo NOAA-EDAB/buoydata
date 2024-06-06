@@ -9,7 +9,6 @@
 #'
 #'To learn more about using \code{buoydata} click the index below
 #'
+#' @keywords internal
 #'
-#' @docType package
-#' @name buoydata
-NULL
+"_PACKAGE"
