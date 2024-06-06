@@ -2,4 +2,3 @@
 
 export(combine_buoy_data)
 export(get_buoy_data)
-importFrom(magrittr,"%>%")
