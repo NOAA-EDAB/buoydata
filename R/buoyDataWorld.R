@@ -8,6 +8,15 @@
 #'     \item{Y1}{First year of data}
 #'     \item{YN}{Last year of data}
 #'     \item{nYears}{Number of years of data}
+#'     \item{LAT}{Latitude}
+#'     \item{LON}{Longitude}
+#'     \item{STATION_LOC}{Description of station location}
+#'     \item{STATION_NAME}{Name of Station}
+#'     \item{TTYPE}{Number of years of data}
+#'     \item{TIMEZONE}{Time Zone}
+#'     \item{OWNER}{Code assigned to OWNERNAME}
+#'     \item{OWNERNAME}{Owner organization of data }
+#'     \item{COUNTRYCODE}{Country code associated with OWNERNAME}
 #'}
 #'
 #'
