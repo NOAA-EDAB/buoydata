@@ -2,6 +2,10 @@
 #'
 #' Parses historic data webpage and joins with station data listed in txt file stored on web at "https://www.ndbc.noaa.gov/data/stations/"
 #'
+#' @param exportFile Boolean. Create rda files and save to data folder (Default = F)
+#' @param isRunLocal Boolean. Is function being run locally (Default = T).
+#'  A different file name is created if running locally that doesn't interfere with git
+#'
 #'
 #'@return lazy data
 #'
@@ -13,7 +17,7 @@ library(magrittr)
 source(here::here("data-raw","get_buoy_names.R"))
 source(here::here("data-raw","get_buoy_location.R"))
 
-get_buoy_stations <- function(){
+get_buoy_stations <- function(exportFile=F,isRunLocal=T){
 
   #url where all data is stored
   dataPath <- "https://www.ndbc.noaa.gov/data/stations/"
@@ -46,10 +50,22 @@ get_buoy_stations <- function(){
   # now add additional fields to dataframe
   buoyDataWorld <- dplyr::left_join(buoyData,newData,by="ID")
 
+  # create a different file if run locally
+  if(isRunLocal){
+    fn <- "localdatapull.txt"
+  } else {
+    fn <- "datapull.txt"
+  }
 
-  file.create(here::here("data-raw","datapull.txt"))
+  file.create(here::here("data-raw",fn))
+  dateCreated <- Sys.time()
+  cat(paste0(dateCreated,"\n"),file=here::here("data-raw",fn))
 
-  #usethis::use_data(buoyDataWorld,overwrite = T)
+  #
+  if (exportFile) {
+    usethis::use_data(buoyDataWorld,overwrite = T)
+  }
+
 
   return(buoyDataWorld)
 
