@@ -12,11 +12,13 @@
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data
-hosted by National Data Buoy Center. Note: the
-[rnoaa](https://github.com/ropensci/rnoaa) package also has functions to
-get buoy data. The difference is that (in
+hosted by [National Data Buoy Center](https://www.ndbc.noaa.gov/). Note:
+the [rnoaa](https://github.com/ropensci/rnoaa) package also has
+functions to get buoy data. The difference is that (in
 [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data
-can be downloaded at any time from a single buoy.
+can be downloaded at any time from a single buoy. Note: **As of 2023
+[rnoaa](https://github.com/ropensci/rnoaa) is no longer officially
+supported**
 
 `buoydata` downloads multiple years and stitches all years data together
 in a single data frame. In addition the lazily loaded station
@@ -73,6 +75,12 @@ Then plot the data
 ```
 
 <img src="man/figures/WTMP44013.png" align="center" width="100%"/>
+
+## Reference
+
+[Documentation](https://www.ndbc.noaa.gov/faq/measdes.shtml) of the
+meteorological data can be found on the National Data Buoy Center
+website
 
 ## Contact
 
