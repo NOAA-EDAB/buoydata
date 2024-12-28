@@ -53,6 +53,7 @@ get_buoy_stations <- function(exportFile=F,isRunLocal=T){
   # create a different file if run locally
   if(isRunLocal){
     fn <- "localdatapull.txt"
+    saveRDS(buoyDataWorld,here::here("data-raw/newData.rds"))
   } else {
     fn <- "datapull.txt"
   }
