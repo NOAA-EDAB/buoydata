@@ -21,7 +21,9 @@ knitr::opts_chunk$set(
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FNOAA-EDAB%2Fbuoydata&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 <!-- badges: end -->
 
-The goal of `buoydata` is to easily download and process buoy data hosted by [National Data Buoy Center](https://www.ndbc.noaa.gov/). Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that (in [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data can be downloaded at any time from a single buoy. Note: **As of 2023 [rnoaa](https://github.com/ropensci/rnoaa) is no longer officially supported**
+The goal of `buoydata` is to easily download and process buoy data hosted by [National Data Buoy Center](https://www.ndbc.noaa.gov/).
+
+**Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that (in [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data can be downloaded at any time from a single buoy. As of 2023 [rnoaa](https://github.com/ropensci/rnoaa) is no longer officially supported**
 
 `buoydata` downloads multiple years and stitches all years data together in a single data frame. In addition the lazily loaded station description data provided with the package combines many more attributes (than [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter. 
 

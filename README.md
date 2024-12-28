@@ -12,11 +12,12 @@
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data
-hosted by [National Data Buoy Center](https://www.ndbc.noaa.gov/). Note:
-the [rnoaa](https://github.com/ropensci/rnoaa) package also has
+hosted by [National Data Buoy Center](https://www.ndbc.noaa.gov/).
+
+**Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has
 functions to get buoy data. The difference is that (in
 [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data
-can be downloaded at any time from a single buoy. Note: **As of 2023
+can be downloaded at any time from a single buoy. As of 2023
 [rnoaa](https://github.com/ropensci/rnoaa) is no longer officially
 supported**
 
