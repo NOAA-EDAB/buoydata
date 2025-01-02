@@ -17,7 +17,7 @@ library(magrittr)
 source(here::here("data-raw","get_buoy_names.R"))
 source(here::here("data-raw","get_buoy_location.R"))
 
-get_buoy_stations <- function(exportFile=F,isRunLocal=T){
+get_buoy_stations <- function(exportFile=F,isRunLocal=T, singlebuoyID = NULL){
 
   #url where all data is stored
   dataPath <- "https://www.ndbc.noaa.gov/data/stations/"
@@ -36,7 +36,7 @@ get_buoy_stations <- function(exportFile=F,isRunLocal=T){
 
   # Get names of buoys for which there are data
   buoyData <- get_buoy_names()
-  # now select columns TTYPE, TIMEXONE, OWNER from table and join with scaped data
+  # now select columns TTYPE, TIMEXONE, OWNER from table and join with scraped data
   newData <- stations %>% dplyr::filter(X..STATION_ID %in% buoyData$ID) %>%
     dplyr::select(X..STATION_ID,TTYPE,TIMEZONE,OWNER) %>%
     dplyr::rename(ID = X..STATION_ID)
@@ -45,17 +45,24 @@ get_buoy_stations <- function(exportFile=F,isRunLocal=T){
 
   # now get buoy names and stations from web scraping
   #buoyData <- get_buoy_names()
-  buoyData <- get_buoy_location(buoyData)
+  if(is.null(singlebuoyID)) {
+    buoyData <- get_buoy_location(buoyData)
+  } else {
+    bd <- buoyData |> dplyr::filter(ID == singlebuoyID)
+    buoyData <- get_buoy_location(bd)
+  }
 
   # now add additional fields to dataframe
   buoyDataWorld <- dplyr::left_join(buoyData,newData,by="ID")
 
   # create a different file if run locally
-  if(isRunLocal){
-    fn <- "localdatapull.txt"
-    saveRDS(buoyDataWorld,here::here("data-raw/newData.rds"))
-  } else {
-    fn <- "datapull.txt"
+  if (is.null(singlebuoyID)) {
+    if(isRunLocal){
+      fn <- "localdatapull.txt"
+      saveRDS(buoyDataWorld,here::here("data-raw/newData.rds"))
+    } else {
+      fn <- "datapull.txt"
+    }
   }
 
   file.create(here::here("data-raw",fn))
