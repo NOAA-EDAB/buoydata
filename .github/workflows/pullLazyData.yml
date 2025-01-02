@@ -51,7 +51,7 @@ jobs:
 
       - name: Install packages
         run: |
-          install.packages(c("remotes","here"))
+          install.packages(c("remotes","here","xml2","stringr"))
           remotes::install_github("NOAA-EDAB/buoydata")
         shell: Rscript {0}
 
