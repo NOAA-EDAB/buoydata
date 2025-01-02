@@ -38,7 +38,7 @@ combine_buoy_data <- function(buoyid,variable,inDir){
    fileParts <- strsplit(afile,"\\.")
    year <- strsplit(fileParts[[1]][1],"_")[[1]][2]
    message("Processing year = ",year)
-   fData <- read.csv(paste0(buoyDir,"/",afile),stringsAsFactors = FALSE)
+   fData <- utils::read.csv(paste0(buoyDir,"/",afile),stringsAsFactors = FALSE)
    # check for unit headers in first row
    if (any(grepl("#*",fData[1,]))) {
       fData <- fData[-1,]

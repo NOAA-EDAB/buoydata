@@ -64,7 +64,7 @@ get_buoy_data <- function(buoyid,year,outDir){
     con <- gzfile(destfile)
     open(con)
     # then read content inside zipped file
-    buoyData <- read.delim(con,sep="")
+    buoyData <- utils::read.delim(con,sep="")
     close(con)
 
     # remove zipped file
