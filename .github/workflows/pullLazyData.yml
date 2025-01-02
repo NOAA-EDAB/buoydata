@@ -39,8 +39,8 @@ jobs:
 
       - name: Install command line packages
         run: |
-          sudo apt update
-          sudo apt-get install libcurl4-openssl-dev libgit2-dev
+#          sudo apt update
+#          sudo apt-get install libcurl4-openssl-dev libgit2-dev
 #          sudo apt-get install  libgdal-dev libcurl4-gnutls-dev libgit2-dev libudunits2-dev libharfbuzz-dev libfribidi-dev
         shell: bash
 
@@ -51,7 +51,7 @@ jobs:
 
       - name: Install packages
         run: |
-          install.packages(c("remotes", "here","rmarkdown"))
+          install.packages("remotes")
           remotes::install_github("NOAA-EDAB/buoydata")
         shell: Rscript {0}
 
@@ -65,7 +65,7 @@ jobs:
       - name: Pull nbdc data
         run: |
           options(timeout = 60 * 60 * 6)
-          source(here::here("data-raw/get_buoy_stations.R"))
+          source(here::here("data-raw/get_buoyDataWorld.R"))
           newData <- get_buoyDataWorld(exportFile=F,isRunLocal = F,buoyIDs = c("42056","45212","46072"))
           saveRDS(newData,here::here("data-raw/newData.rds"))
         shell: Rscript {0}

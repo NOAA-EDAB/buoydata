@@ -26,4 +26,6 @@ Suggests:
     sf,
     kableExtra,
     usethis,
-    stringr
+    stringr,
+    knitr,
+    rmarkdown
