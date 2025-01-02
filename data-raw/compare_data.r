@@ -4,7 +4,8 @@
 compare_data <- function() {
 
   current <- readRDS(here::here("data-raw/tempData.rds"))
-  new <- readRDS(here::here("data-raw/newData.rds"))
+  #new <- readRDS(here::here("data-raw/newData.rds"))
+  new <- readRDS(here::here("data-raw/testdata.rds"))
 
   sameDim <- all.equal(dim(current),dim(new))
 
@@ -30,10 +31,15 @@ compare_data <- function() {
   stations <- aa$ID
   for (aid in stations) {
     for (aname in names(aa)) {
+
       # print(c(aid,aname))
       row <- list()
       aaa <- aa |> dplyr::filter(ID == aid)
       bbb <- bb |> dplyr::filter(ID == aid)
+
+      if ((nrow(aaa) == 0 | nrow(bbb) == 0)) {
+        next
+      }
 
       if (is.na(aaa[[aname]]) & is.na(bbb[[aname]])) {
         next
@@ -43,6 +49,7 @@ compare_data <- function() {
         # print(aid)
         # print(aaa[[aname]] )
         # print(bbb[[aname]] )
+        #print("33333")
         df <- rbind(df,row)
         next
       }
@@ -50,7 +57,7 @@ compare_data <- function() {
 
       if (aaa[[aname]] != bbb[[aname]]) {
         if (aname %in% c("LAT","LON")) {
-          if (abs(aaa[aname]-bbb[aname]) > .01) {
+          if (abs(aaa[[aname]]-bbb[[aname]]) > .001) {
             row <- c(aid,aname,aaa[[aname]],bbb[[aname]])
             # print(aid)
             # print(abs(aaa[aname]-bbb[aname]))
@@ -63,6 +70,7 @@ compare_data <- function() {
           # print(aid)
           # print(aaa[[aname]] )
           # print(bbb[[aname]] )
+          #print("22222")
           df <- rbind(df,row)
         }
       }
