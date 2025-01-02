@@ -46,10 +46,10 @@ get_buoyDataWorld <- function(exportFile=F,isRunLocal=T, buoyIDs = NULL){
 
   # now get buoy names and stations from web scraping
   #buoyData <- get_buoy_names()
-  if(is.null(singlebuoyID)) {
+  if(is.null(buoyIDs)) {
     buoyData <- get_buoy_location(buoyData)
   } else {
-    bd <- buoyData |> dplyr::filter(ID %in% singlebuoyID)
+    bd <- buoyData |> dplyr::filter(ID %in% buoyIDs)
     buoyData <- get_buoy_location(bd)
   }
 
