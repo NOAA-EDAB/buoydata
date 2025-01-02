@@ -25,14 +25,15 @@ params$sameDim
 
 ### Same data
 
-Filtering for `params$mainVars` are data sets the same
+Filtering for `r params$mainVars`.
+Are data sets the same?
 
 ```{r samemain, echo = F}
 params$sameMain
 ```
 
 
-### Differences
+### Differences in values of variables
 ```{r diffs, echo = F}
 kableExtra::kable(params$df)
 ```
