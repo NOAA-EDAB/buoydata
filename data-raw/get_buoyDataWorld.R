@@ -64,6 +64,8 @@ get_buoyDataWorld <- function(exportFile=F,isRunLocal=T, buoyIDs = NULL){
     } else {
       fn <- "datapull.txt"
     }
+  } else {
+    fn <- "datapulltest.txt"
   }
 
   file.create(here::here("data-raw",fn))
