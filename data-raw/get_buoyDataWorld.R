@@ -5,6 +5,7 @@
 #' @param exportFile Boolean. Create rda files and save to data folder (Default = F)
 #' @param isRunLocal Boolean. Is function being run locally (Default = T).
 #'  A different file name is created if running locally that doesn't interfere with git
+#' @param buoyIDs Character vector. List specific IDs to pull (Default = NULL, pulls all data)
 #'
 #'
 #'@return lazy data
@@ -17,7 +18,7 @@ library(magrittr)
 source(here::here("data-raw","get_buoy_names.R"))
 source(here::here("data-raw","get_buoy_location.R"))
 
-get_buoy_stations <- function(exportFile=F,isRunLocal=T, singlebuoyID = NULL){
+get_buoyDataWorld <- function(exportFile=F,isRunLocal=T, buoyIDs = NULL){
 
   #url where all data is stored
   dataPath <- "https://www.ndbc.noaa.gov/data/stations/"
@@ -48,7 +49,7 @@ get_buoy_stations <- function(exportFile=F,isRunLocal=T, singlebuoyID = NULL){
   if(is.null(singlebuoyID)) {
     buoyData <- get_buoy_location(buoyData)
   } else {
-    bd <- buoyData |> dplyr::filter(ID == singlebuoyID)
+    bd <- buoyData |> dplyr::filter(ID %in% singlebuoyID)
     buoyData <- get_buoy_location(bd)
   }
 
@@ -56,7 +57,7 @@ get_buoy_stations <- function(exportFile=F,isRunLocal=T, singlebuoyID = NULL){
   buoyDataWorld <- dplyr::left_join(buoyData,newData,by="ID")
 
   # create a different file if run locally
-  if (is.null(singlebuoyID)) {
+  if (is.null(buoyIDs)) {
     if(isRunLocal){
       fn <- "localdatapull.txt"
       saveRDS(buoyDataWorld,here::here("data-raw/newData.rds"))
