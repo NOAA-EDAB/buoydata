@@ -1,0 +1,43 @@
+---
+title: "Report from buoydata data pull"
+output: html_document
+params: 
+  df: NA
+  sameDim: NA
+  sameMain: NA
+  mainVars: NA
+date: "`r Sys.time()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Same dimension
+
+Do the two data sets have the name number of buoys and the same number of variables?
+
+```{r samedim, echo = F}
+params$sameDim
+```
+
+
+### Same data
+
+Filtering for `params$mainVars` are data sets the same
+
+```{r samemain, echo = F}
+params$sameMain
+```
+
+
+### Differences
+```{r diffs, echo = F}
+kableExtra::kable(params$df)
+```
+
+
+## Links to repos:
+
+* [buoydata](https://github.com/NOAA-EDAB/buoydata)
