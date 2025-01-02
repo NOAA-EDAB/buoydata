@@ -67,7 +67,8 @@ jobs:
           options(timeout = 60 * 60 * 6)
           source(here::here("data-raw/get_buoyDataWorld.R"))
           newData <- get_buoyDataWorld(exportFile=F,isRunLocal = F,buoyIDs = c("42056","45212","46072"))
-          saveRDS(newData,here::here("data-raw/newData.rds"))
+          #saveRDS(newData,here::here("data-raw/newData.rds"))
+          saveRDS(newData,here::here("data-raw/testdata.rds"))
         shell: Rscript {0}
 
       - name: Compare current pull with existing
