@@ -4,8 +4,8 @@
 compare_data <- function() {
 
   current <- readRDS(here::here("data-raw/tempData.rds"))
-  #new <- readRDS(here::here("data-raw/newData.rds"))
-  new <- readRDS(here::here("data-raw/testdata.rds"))
+  new <- readRDS(here::here("data-raw/newData.rds"))
+  #new <- readRDS(here::here("data-raw/testdata.rds"))
 
   sameDim <- all.equal(dim(current),dim(new))
 
