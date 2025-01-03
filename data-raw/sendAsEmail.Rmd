@@ -35,7 +35,8 @@ params$sameMain
 
 ### Differences in values of variables
 ```{r diffs, echo = F}
-kableExtra::kable(params$df)
+params$df |> 
+  gt::gt()
 ```
 
 

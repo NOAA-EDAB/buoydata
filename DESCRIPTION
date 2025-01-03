@@ -24,7 +24,7 @@ Suggests:
     here,
     xml2,
     sf,
-    kableExtra,
+    gt,
     usethis,
     stringr,
     knitr,
