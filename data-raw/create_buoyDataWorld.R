@@ -83,6 +83,18 @@ get_buoyDataWorld <- function(exportFile = F, isRunLocal = T, buoyIDs = NULL) {
     dplyr::filter(ID %in% erddap_stations$station) |>
     dplyr::left_join(erddap_stations, by = c("ID" = "station"))
 
+  # find stations for which there is data but no metadata in station_table file
+  stations_missing_metadata <- setdiff(
+    erddap_stations$station,
+    buoyDataWorld$ID
+  )
+  missing_stations <- erddap_stations |>
+    dplyr::filter(station %in% stations_missing_metadata) |>
+    dplyr::rename(ID = station)
+
+  # combine all into one dataframe
+  buoyDataWorld <- dplyr::bind_rows(buoyDataWorld, missing_stations)
+
   ## Format like exported data
 
   # # Get names of buoys for which there are data
