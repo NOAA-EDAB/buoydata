@@ -19,7 +19,8 @@ Imports:
     downloader,
     dplyr,
     lubridate,
-    ggplot2
+    ggplot2,
+    rerddap
 Suggests:
     here,
     xml2,
