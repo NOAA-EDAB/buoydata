@@ -7,8 +7,6 @@
 #' @param exportFile Boolean. Create rda files and save to data folder (Default = F)
 #' @param isRunLocal Boolean. Is function being run locally (Default = T).
 #'  A different file name is created if running locally that doesn't interfere with git
-#' @param buoyIDs Character vector. List specific IDs to pull (Default = NULL, pulls all data)
-#'
 #'
 #'@return lazy data
 #'
@@ -23,23 +21,20 @@
 #' This is the main file to create the lazy data exported with the package.
 #'
 #'
-#'
-library(magrittr)
-source(here::here("data-raw", "get_buoy_names.R"))
-source(here::here("data-raw", "get_buoy_location.R"))
 
-get_buoyDataWorld <- function(exportFile = F, isRunLocal = T, buoyIDs = NULL) {
+get_buoyDataWorld <- function(exportFile = F, isRunLocal = T) {
   # ERDDAP url
   erddap_url <- 'https://coastwatch.pfeg.noaa.gov/erddap/'
   datasetid <- "cwwcNDBCMet"
-  info <- rerddap::info(datasetid, url = erddap_url)
+  info <- suppressMessages(rerddap::info(datasetid, url = erddap_url))
 
   # distinct stations
   erddap_stations <- rerddap::tabledap(
     info,
     fields = c("station", "longitude", "latitude"),
     distinct = TRUE
-  )
+  ) |>
+    dplyr::rename(LAT = latitude, LON = longitude)
 
   #url where all data is stored on ndbc site
   ndbc_url <- "https://www.ndbc.noaa.gov/data/stations/"
@@ -51,7 +46,7 @@ get_buoyDataWorld <- function(exportFile = F, isRunLocal = T, buoyIDs = NULL) {
     stringsAsFactors = F,
     header = T
   ) |>
-    dplyr::rename(ID = X..STATION_ID) |>
+    dplyr::rename(ID = X..STATION_ID, STATION_LOC = NAME) |>
     dplyr::filter(!grepl("#", ID)) |> # poor file format - junk rows
     dplyr::mutate(
       dplyr::across(where(is.character), trimws),
@@ -60,6 +55,7 @@ get_buoyDataWorld <- function(exportFile = F, isRunLocal = T, buoyIDs = NULL) {
     dplyr::mutate(
       ID = dplyr::case_when((nchar(ID) == 4) ~ paste0(ID, "_"), .default = ID)
     ) |> # erddap changes
+    dplyr::select(-LOCATION) |> # a duplicate of LAT and LON
     dplyr::as_tibble()
 
   # grab station owners data
@@ -92,50 +88,86 @@ get_buoyDataWorld <- function(exportFile = F, isRunLocal = T, buoyIDs = NULL) {
     dplyr::filter(station %in% stations_missing_metadata) |>
     dplyr::rename(ID = station)
 
-  # combine all into one dataframe
-  buoyDataWorld <- dplyr::bind_rows(buoyDataWorld, missing_stations)
+  # combine all into one dataframe & Format like exported data
+  buoyDataWorld <- dplyr::bind_rows(buoyDataWorld, missing_stations) |>
+    dplyr::relocate(
+      ID,
+      LAT,
+      LON,
+      STATION_LOC,
+      TTYPE,
+      TIMEZONE,
+      OWNER,
+      OWNERNAME,
+      COUNTRY
+    )
 
-  ## Format like exported data
+  ## ERDDAP times out too frequently so error handling hd to be introduced
+  ## For each station find data availability.
+  # This will take about 2 hrs (~ 1300 buoys)
+  stationi_meta <- list()
+  station_meta <- NULL
+  for (i in 1:length(erddap_stations$station)) {
+    station_id <- erddap_stations$station[i]
+    message(paste0("Processing station: ", i, " - ", station_id))
+    attempt <- 1
+    success <- FALSE
+    while (!success) {
+      attempt <- attempt + 1
+      tryCatch(
+        {
+          d <- rerddap::tabledap(
+            datasetid,
+            fields = c("time"),
+            query = paste0('station="', station_id, '"'),
+            distinct = TRUE
+          )
+          success <- TRUE
+        },
+        error = function(e) {
+          message("An error occurred: ", conditionMessage(e))
+          message(paste0("Attempt # ", attempt))
+          return(NULL)
+        }
+      )
+    }
 
-  # # Get names of buoys for which there are data
-  # buoyData <- get_buoy_names()
-  # # now select columns TTYPE, TIMEXONE, OWNER from table and join with scraped data
-  # newData <- stations %>%
-  #   dplyr::filter(X..STATION_ID %in% buoyData$ID) %>%
-  #   dplyr::select(X..STATION_ID, TTYPE, TIMEZONE, OWNER) %>%
-  #   dplyr::rename(ID = X..STATION_ID)
-  #
-  # newData <- dplyr::left_join(newData, newOwners, by = "OWNER") # adds the name and country
-  #
-  # # now get buoy names and stations from web scraping
-  # #buoyData <- get_buoy_names()
-  # if (is.null(buoyIDs)) {
-  #   buoyData <- get_buoy_location(buoyData)
-  # } else {
-  #   bd <- buoyData |> dplyr::filter(ID %in% buoyIDs)
-  #   buoyData <- get_buoy_location(bd)
-  # }
-  #
-  # # now add additional fields to dataframe
-  # buoyDataWorld <- dplyr::left_join(buoyData, newData, by = "ID")
+    yrs <- lubridate::year(d$time) |>
+      unique() |>
+      sort()
+
+    stationi_meta <- data.frame(
+      ID = station_id,
+      Y1 = min(yrs),
+      YN = max(yrs),
+      nYEARS = length(yrs),
+      lastMeasurement = tail(d$time, 1)
+    )
+
+    station_meta <-
+      rbind(station_meta, stationi_meta)
+  }
+
+  # join table with metadata
+  main_table <- buoyDataWorld |>
+    dplyr::left_join(station_meta, by = "ID") |>
+    dplyr::relocate(ID, Y1, YN, nYEARS, lastMeasurement)
 
   # create a different file if run locally
-  if (is.null(buoyIDs)) {
-    if (isRunLocal) {
-      fn <- "localdatapull.txt"
-      saveRDS(buoyDataWorld, here::here("data-raw/newData.rds"))
-    } else {
-      fn <- "datapull.txt"
-    }
+
+  if (isRunLocal) {
+    fn <- "localdatapull.txt"
+    saveRDS(main_table, here::here("data-raw/newData.rds"))
   } else {
-    fn <- "datapulltest.txt"
+    fn <- "datapull.txt"
   }
 
   file.create(here::here("data-raw", fn))
   dateCreated <- Sys.time()
   cat(paste0(dateCreated, "\n"), file = here::here("data-raw", fn))
 
-  #
+  buoyDataWorld <- main_table
+
   if (exportFile) {
     usethis::use_data(buoyDataWorld, overwrite = T)
   }
