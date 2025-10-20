@@ -1,5 +1,9 @@
 url: https://noaa-edab.github.io/buoydata/
 
+authors:
+  Andy Beet:
+    href: https://andybeet.com
+
 template:
  bootstrap: 5
 
@@ -14,5 +18,4 @@ reference:
 - title: "Functions"
   desc: "Functions used to help user extract information from the bundled data"
 - contents:
-  - get_buoy_data
-  - combine_buoy_data
+  - starts_with("get_")
