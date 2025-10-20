@@ -18,10 +18,10 @@ get buoy data. The difference is that (in
 [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data
 can be downloaded at any time from a single buoy.
 
-`buoydata` downloads multiple years and stitches all years data together
-in a single data frame. In addition the lazily loaded station
-description data provided with the package combines many more attributes
-(than [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
+`buoydata` downloads all of the buoys data from ERDDAP. In addition the
+lazily loaded station description data provided with the package
+combines many more attributes (than
+[rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
 
 *Date of most recent data pull: 2022-06-17*
 
