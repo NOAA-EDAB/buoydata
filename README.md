@@ -8,7 +8,7 @@
 [![gh-pages](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml)
 [![R-CMD-check](https://github.com/NOAA-EDAB/buoydata/actions/workflows/check-standard.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/check-standard.yml)
 [![gitleaks](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FNOAA-EDAB%2Fbuoydata&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data
@@ -28,7 +28,7 @@ description data provided with the package combines many more attributes
 ## Installation
 
 ``` r
-remotes::install_github("NOAA-EDAB/buoydata")
+pak::pak("NOAA-EDAB/buoydata")
 ```
 
 ## Example
@@ -44,38 +44,41 @@ buoydata::buoyDataWorld |>
   dplyr::filter(LAT > 41,LAT < 43) |> 
   dplyr::filter(LON > -71, LON < -69) |> 
   dplyr::filter(nYEARS >= 20)
-#>      ID   Y1   YN nYEARS    LAT     LON                      STATION_LOC
-#> 1 44013 1984 2019     36 42.346 -70.651 BOSTON 16 NM East of Boston, MA.
-#> 2 iosn3 1984 2019     36 42.967 -70.623              Isle of Shoals, NH.
-#>   STATION_NAME                       TTYPE TIMEZONE OWNER OWNERNAME COUNTRYCODE
-#> 1         <NA> 2.1-meter ionomer foam buoy        E     N      NDBC          US
-#> 2         <NA>               C-MAN Station        E     N      NDBC          US
+#> # A tibble: 5 × 13
+#>   ID       Y1    YN nYEARS   LAT   LON STATION_LOC   STATION_NAME TTYPE TIMEZONE
+#>   <chr> <dbl> <dbl>  <dbl> <dbl> <dbl> <chr>         <chr>        <chr> <chr>   
+#> 1 44013  1984  2023     40  42.3 -70.7 BOSTON 16 NM… <NA>         2.1-… E       
+#> 2 44018  2002  2023     22  42.2 -70.2 9 NM North o… CAPE COD     3-me… E       
+#> 3 44029  2004  2023     20  42.5 -70.6 Massachusett… Buoy A01     Moor… E       
+#> 4 bzbm3  2004  2023     20  41.5 -70.7 Woods Hole, … 8447930      Wate… E       
+#> 5 iosn3  1984  2023     40  43.0 -70.6 Isle of Shoa… <NA>         C-MA… E       
+#> # ℹ 3 more variables: OWNER <chr>, OWNERNAME <chr>, COUNTRYCODE <chr>
 ```
 
-``` r
-# get the data for buoy 44013
-get_buoy_data(buoyid="44013",year=1984:2019,outDir=here::here("output"))
+Lets pull the sea surface temperature (variable name, wtmp) from buoy
+44018 - 9 NM North of Provincetown, MA.
 
-# process sea surface temperature (celcius) into one large data frame
-data <- combine_buoy_data(buoyid = "44013",variable="WTMP",inDir = here::here("output"))
+``` r
+buoy_data <- get_buoy_data(buoyid="44018", var = "wtmp")
 ```
 
 Then plot the data
 
 ``` r
- ggplot2::ggplot(data) +
-   ggplot2::geom_line(ggplot2::aes(x=DATE,y=WTMP)) + 
+ p <- ggplot2::ggplot(buoy_data) +
+   ggplot2::geom_line(ggplot2::aes(x=time,y=wtmp)) + 
    ggplot2::ylab("Sea Surface Temp (Celcius)") +
    ggplot2::xlab("")
+print(p)
 ```
 
-<img src="man/figures/WTMP44013.png" align="center" width="100%"/>
+<img src="man/figures/README-plotData-1.png" width="100%" />
 
 ## Contact
 
-| [andybeet](https://github.com/andybeet)                                                         |
-|-------------------------------------------------------------------------------------------------|
-| [![](https://avatars1.githubusercontent.com/u/22455149?s=100&v=4)](https://github.com/andybeet) |
+| [andybeet](https://github.com/andybeet) |
+|----|
+| [![andybeet avatar](https://avatars1.githubusercontent.com/u/22455149?s=100&v=4)](https://github.com/andybeet) |
 
 #### Legal disclaimer
 

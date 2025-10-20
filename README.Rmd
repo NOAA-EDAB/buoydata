@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 [![gh-pages](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml)
 [![R-CMD-check](https://github.com/NOAA-EDAB/buoydata/actions/workflows/check-standard.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/check-standard.yml)
 [![gitleaks](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FNOAA-EDAB%2Fbuoydata&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data hosted by National Data Buoy Center. Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that (in [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data can be downloaded at any time from a single buoy. 
@@ -30,14 +30,14 @@ The goal of `buoydata` is to easily download and process buoy data hosted by Nat
 ## Installation
 
 ``` r
-remotes::install_github("NOAA-EDAB/buoydata")
+pak::pak("NOAA-EDAB/buoydata")
 ```
 
 ## Example
 
 Find all buoys located between latitude [41,43] and longitude [-71,-67] with a time series of at least 20 years. Then pull and process data from a single buoy. 
 
-``` {r, eval=T}
+``` {r, eval=TRUE}
 library(buoydata)
 
 buoydata::buoyDataWorld |> 
@@ -46,30 +46,29 @@ buoydata::buoyDataWorld |>
   dplyr::filter(nYEARS >= 20)
 ```
 
-``` r
-# get the data for buoy 44013
-get_buoy_data(buoyid="44013",year=1984:2019,outDir=here::here("output"))
 
-# process sea surface temperature (celcius) into one large data frame
-data <- combine_buoy_data(buoyid = "44013",variable="WTMP",inDir = here::here("output"))
+Lets pull the sea surface temperature (variable name, wtmp) from buoy 44018 - `r buoydata::buoyDataWorld |> dplyr::filter(ID == 44018) |> dplyr::pull(STATION_LOC)`
+
+``` {r, eval = TRUE, echo = TRUE}
+buoy_data <- get_buoy_data(buoyid="44018", var = "wtmp")
 ```
+
 Then plot the data
 
-```{r plotData, echo = T,eval=F}
- ggplot2::ggplot(data) +
-   ggplot2::geom_line(ggplot2::aes(x=DATE,y=WTMP)) + 
+```{r plotData, echo = TRUE, eval = TRUE}
+ p <- ggplot2::ggplot(buoy_data) +
+   ggplot2::geom_line(ggplot2::aes(x=time,y=wtmp)) + 
    ggplot2::ylab("Sea Surface Temp (Celcius)") +
    ggplot2::xlab("")
+print(p)
 ```
-
-<img src="man/figures/WTMP44013.png" align="center" width="100%"/>
 
 
 ## Contact
 
 | [andybeet](https://github.com/andybeet)        
 | ----------------------------------------------------------------------------------------------- 
-| [![](https://avatars1.githubusercontent.com/u/22455149?s=100&v=4)](https://github.com/andybeet) | 
+| [![andybeet avatar](https://avatars1.githubusercontent.com/u/22455149?s=100&v=4)](https://github.com/andybeet) | 
 
 
 
