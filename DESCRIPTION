@@ -6,7 +6,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "andrew.beet@noaa.gov")
 Description: Extracts all historical data from website and creates a list of all stations with their lat, long, name and data range
-URL: https://github.com/NOAA-EDAB/buoydata
+URL: https://github.com/NOAA-EDAB/buoydata, https://noaa-edab.github.io/buoydata
 BugReports: https://github.com/NOAA-EDAB/buoydata/issues
 License: file LICENSE
 Encoding: UTF-8
