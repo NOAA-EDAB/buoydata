@@ -1,0 +1,59 @@
+---
+title: "buoymap"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{buoymap}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(buoydata)
+library(ggplot2)
+```
+
+The [NDBC](https://www.ndbc.noaa.gov/) shows a map of the buoy locations with a "hover over" feature displaying recent data. The map below displays all buoys and the number of years of data available. It is an interactive map, allowing you to zoom in and out of a region
+
+
+```{r buoymap, echo = FALSE, eval = TRUE, out.width = "100%"}
+
+my_data_interactive <- buoy_data  |> 
+  dplyr::mutate(
+    # Create a nice string for the hover label
+    hover_text = paste0("ID: ", ID, "\n", 
+                        "Name: ", STATION_LOC, "\n", 
+                        "Duration: ", nYEARS, " years")
+  )
+
+world_map <- map_data("world")
+p <- suppressWarnings(ggplot() +
+  geom_polygon(data = world_map, aes(x = long, y = lat, group = group),
+               fill = "gray", alpha = 0.5) +
+  geom_point(data = my_data_interactive, 
+             aes(x = LON, y = LAT, size = nYEARS, color = nYEARS, 
+                 text = hover_text), # <-- Key for custom tooltip
+             alpha = 0.8,
+             shape = 19) +
+  xlab("") +
+  ylab("") +
+  scale_size_continuous(range = c(1, 4), name = "Duration (nYEARS)") +
+  scale_color_viridis_c(name = "Duration (nYEARS)", option = "D") +
+  theme_minimal() +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        legend.position = "none")
+)
+
+# Convert to interactive plotly object
+ply <- plotly::ggplotly(p, tooltip = "text")
+
+ply
+```
+

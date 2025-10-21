@@ -38,6 +38,21 @@ All of the buoy data is pulled from the coastwatch
 set ID is = `cwwcNDBCMet`. The metadata for this data set can be found
 at <https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html>.
 
+The ERDDAP server retrieves and combines historic data and real-time
+data from the [NDBC](https://www.ndbc.noaa.gov/) site. The data you
+retrieve using this package will be ALL data from a particular buoy up
+to the most recent measurement available.
+
+To view the time series length available for all station visually (on an
+interactive world map) see the `vignette("buoymap")`
+
+If you observer a discrepancy between the data on the NDBC website and
+what is available in this package, first check to see if it is available
+on
+[ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html)
+or use `get_buoy_data()` from this package. If it is not please contact
+`erd.data at noaa.gov` otherwise create a data issue
+
 ## Contact
 
 | [andybeet](https://github.com/andybeet) |
