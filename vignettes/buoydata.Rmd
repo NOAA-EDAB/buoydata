@@ -1,0 +1,68 @@
+---
+title: "buoydata"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{buoydata}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(buoydata)
+```
+
+All of the buoys hosted by the NDBC (and available on ERDDAP) can be quickly viewed from the bundled data set `buoyDataWorld` which along with the buoys ID, NAME, LAT and LON contain other metadata such as the years of operation, the date/time of the last recorded measurement, and the owners of the buoy 
+
+```{r lazydata, echo = T, eval = TRUE}
+buoyDataWorld |> 
+  dplyr::as_tibble()
+```
+
+This data frame can be used to filter out stations of interest
+
+## Variables
+
+Each buoy measures a different set of variables. A list of the possible variables can be found using the `get_variables()` function
+
+```{r getvars, echo = TRUE, eval = TRUE}
+get_variables()
+```
+
+## Example
+
+Find all buoys located between latitude [41,43] and longitude [-71,-67] with a time series of at least 20 years. Then pull and process data from a single buoy. 
+
+``` {r searchData, eval=TRUE}
+library(buoydata)
+
+buoydata::buoyDataWorld |> 
+  dplyr::filter(LAT > 41,LAT < 43) |> 
+  dplyr::filter(LON > -71, LON < -69) |> 
+  dplyr::filter(nYEARS >= 20)
+```
+
+
+Lets pull the sea surface temperature (variable name, wtmp) from buoy 44018 - `r buoydata::buoyDataWorld |> dplyr::filter(ID == 44018) |> dplyr::pull(STATION_LOC)`
+
+``` {r getData, eval = TRUE, echo = TRUE}
+buoy_data <- get_buoy_data(buoyid="44018", var = "wtmp")
+```
+
+Then plot the data
+
+```{r plotData, echo = TRUE, eval = TRUE, fig.alt="SST time series for buoy 44018"}
+ p <- ggplot2::ggplot(buoy_data) +
+   ggplot2::geom_line(ggplot2::aes(x=time,y=wtmp)) + 
+   ggplot2::ylab("Sea Surface Temp (Celcius)") +
+   ggplot2::xlab("")
+print(p)
+```
+
+
