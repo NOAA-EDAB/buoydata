@@ -157,7 +157,7 @@ get_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
 
   if (isRunLocal) {
     fn <- "localdatapull.txt"
-    saveRDS(main_table, here::here("data-raw/newData.rds"))
+    saveRDS(main_table, here::here("data-raw/new_data.rds"))
   } else {
     fn <- "datapull.txt"
   }
