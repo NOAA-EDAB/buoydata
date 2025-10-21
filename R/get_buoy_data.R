@@ -3,7 +3,7 @@
 #' Pulls data from ERDDAP. All buoys will have the same format. However there will be
 #' cases where some variables will have NAs for the entire variable.
 #'
-#'@param buoyid Character. Name of buoys id. See `buoyDataWorld` for list of buoys available
+#'@param buoyid Character. Name of buoys id. See \code{\link{buoy_data}} for list of buoys available
 #'@param vars Character vector. Vector of variables to pull. Default = NULL, pull all available variables. If you select spcific variables the resulting data frame will be considerably smaller
 #'
 #'@return A data frame

@@ -7,7 +7,7 @@
 get_buoy_data(buoyid, vars = NULL)
 }
 \arguments{
-\item{buoyid}{Character. Name of buoys id. See `buoyDataWorld` for list of buoys available}
+\item{buoyid}{Character. Name of buoys id. See \code{\link{buoy_data}} for list of buoys available}
 
 \item{vars}{Character vector. Vector of variables to pull. Default = NULL, pull all available variables. If you select spcific variables the resulting data frame will be considerably smaller}
 }

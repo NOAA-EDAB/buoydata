@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(buoydata)
 ```
 
-All of the buoys hosted by the NDBC (and available on ERDDAP) can be quickly viewed from the bundled data set `buoyDataWorld` which along with the buoys ID, NAME, LAT and LON contain other metadata such as the years of operation, the date/time of the last recorded measurement, and the owners of the buoy 
+All of the buoys hosted by the NDBC (and available on ERDDAP) can be quickly viewed from the bundled data set [buoy_data](../reference/buoy_data.html) which along with the buoys ID, NAME, LAT and LON contain other metadata such as the years of operation, the date/time of the last recorded measurement, and the owners of the buoy 
 
 ```{r lazydata, echo = T, eval = TRUE}
 buoyDataWorld |> 
