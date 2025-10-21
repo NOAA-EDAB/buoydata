@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# buoydata
+# buoydata <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 
@@ -12,18 +12,21 @@
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data
-hosted by National Data Buoy Center. Note: the
-[rnoaa](https://github.com/ropensci/rnoaa) package also has functions to
-get buoy data. The difference is that (in
+hosted by [National Data Buoy Center](https://www.ndbc.noaa.gov/).
+
+**Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has
+functions to get buoy data. The difference is that (in
 [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data
-can be downloaded at any time from a single buoy.
+can be downloaded at any time from a single buoy. As of 2023
+[rnoaa](https://github.com/ropensci/rnoaa) is no longer officially
+supported**
 
 `buoydata` downloads all of the buoys data from ERDDAP. In addition the
 lazily loaded station description data provided with the package
 combines many more attributes (than
 [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
 
-*Date of most recent data pull: 2022-06-17*
+*Date of most recent data pull: 2024-06-06*
 
 ## Installation
 
@@ -52,6 +55,12 @@ on
 [ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html)
 or use `get_buoy_data()` from this package. If it is not please contact
 `erd.data at noaa.gov` otherwise create a data issue
+
+## Reference
+
+[Documentation](https://www.ndbc.noaa.gov/faq/measdes.shtml) of the
+meteorological data can be found on the National Data Buoy Center
+website
 
 ## Contact
 

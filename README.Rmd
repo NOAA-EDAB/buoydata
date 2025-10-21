@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# buoydata
+# buoydata  <img src="man/figures/logo.png" align="right" width="120" /> 
 
 <!-- badges: start -->
 [![gh-pages](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml)
@@ -21,11 +21,16 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-The goal of `buoydata` is to easily download and process buoy data hosted by National Data Buoy Center. Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that (in [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data can be downloaded at any time from a single buoy. 
+The goal of `buoydata` is to easily download and process buoy data hosted by [National Data Buoy Center](https://www.ndbc.noaa.gov/).
+
+**Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that (in [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data can be downloaded at any time from a single buoy. As of 2023 [rnoaa](https://github.com/ropensci/rnoaa) is no longer officially supported**
 
 `buoydata` downloads all of the buoys data from ERDDAP. In addition the lazily loaded station description data provided with the package combines many more attributes (than [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter. 
 
-*Date of most recent data pull: `r strsplit(as.character(file.info(here::here("data-raw","datapull.txt"))$ctime)," ")[[1]][1]`*
+
+
+
+*Date of most recent data pull: `r strsplit(as.character(file.info(here::here("data-raw","datapull.txt"))$mtime)," ")[[1]][1]`*
 
 ## Installation
 
@@ -42,6 +47,11 @@ The ERDDAP server retrieves and combines historic data and real-time data from t
 To view the time series length available for all station visually (on an interactive world map) see the `vignette("buoymap")`
 
 If you observer a discrepancy between the data on the NDBC website and what is available in this package, first check to see if it is available on [ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html) or use `get_buoy_data()` from this package. If it is not please contact `erd.data at noaa.gov` otherwise create a data issue
+
+## Reference
+
+[Documentation](https://www.ndbc.noaa.gov/faq/measdes.shtml) of the meteorological data can be found on the National Data Buoy Center website
+
 
 ## Contact
 
