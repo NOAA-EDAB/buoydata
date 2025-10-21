@@ -3,14 +3,14 @@ name: ndbc data pull
 on:
   push:
     branches:
-      - main
-      - master
-      - dev
+      # - main
+      # - master
+      # - dev
   pull_request:
     branches:
-      - main
-      - master
-      - dev
+      # - main
+      # - master
+      # - dev
   #schedule:
     # uses UTC/GMT time (+ 5 hrs)
     ## put on HOLD until stockSMART have finished the reorganization
