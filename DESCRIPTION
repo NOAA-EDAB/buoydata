@@ -23,6 +23,7 @@ Suggests:
     usethis,
     stringr,
     knitr,
+    gt,
     rmarkdown,
     maps,
     plotly
