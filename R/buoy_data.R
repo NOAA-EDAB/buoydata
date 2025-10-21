@@ -19,7 +19,7 @@
 #'     \item{COUNTRY}{Country code associated with OWNERNAME}
 #'     \item{HULL}{}
 #'     \item{PAYLOAD}{}
-#'     \item{FORCAST}{}
+#'     \item{FORECAST}{}
 #'     \item{NOTE}{NDBC notes regarding buoy}
 #'}
 #'

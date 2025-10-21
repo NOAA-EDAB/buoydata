@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup, echo = FALSE}
 library(buoydata)
 library(ggplot2)
+library(maps)
 ```
 
 The [NDBC](https://www.ndbc.noaa.gov/) shows a map of the buoy locations with a "hover over" feature displaying recent data. The map below displays all buoys and the number of years of data available. It is an interactive map, allowing you to zoom in and out of a region
@@ -24,7 +25,7 @@ The [NDBC](https://www.ndbc.noaa.gov/) shows a map of the buoy locations with a 
 
 ```{r buoymap, echo = FALSE, eval = TRUE, out.width = "100%"}
 
-my_data_interactive <- buoy_data  |> 
+my_data_interactive <- buoydata::buoy_data  |> 
   dplyr::mutate(
     # Create a nice string for the hover label
     hover_text = paste0("ID: ", ID, "\n", 
