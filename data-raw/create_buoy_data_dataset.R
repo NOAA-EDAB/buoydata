@@ -22,7 +22,7 @@
 #'
 #'
 
-get_buoyDataWorld <- function(exportFile = F, isRunLocal = T) {
+get_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
   # ERDDAP url
   erddap_url <- 'https://coastwatch.pfeg.noaa.gov/erddap/'
   datasetid <- "cwwcNDBCMet"
