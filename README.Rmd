@@ -33,35 +33,9 @@ The goal of `buoydata` is to easily download and process buoy data hosted by Nat
 pak::pak("NOAA-EDAB/buoydata")
 ```
 
-## Example
+## Data
 
-Find all buoys located between latitude [41,43] and longitude [-71,-67] with a time series of at least 20 years. Then pull and process data from a single buoy. 
-
-``` {r, eval=TRUE}
-library(buoydata)
-
-buoydata::buoyDataWorld |> 
-  dplyr::filter(LAT > 41,LAT < 43) |> 
-  dplyr::filter(LON > -71, LON < -69) |> 
-  dplyr::filter(nYEARS >= 20)
-```
-
-
-Lets pull the sea surface temperature (variable name, wtmp) from buoy 44018 - `r buoydata::buoyDataWorld |> dplyr::filter(ID == 44018) |> dplyr::pull(STATION_LOC)`
-
-``` {r, eval = TRUE, echo = TRUE}
-buoy_data <- get_buoy_data(buoyid="44018", var = "wtmp")
-```
-
-Then plot the data
-
-```{r plotData, echo = TRUE, eval = TRUE}
- p <- ggplot2::ggplot(buoy_data) +
-   ggplot2::geom_line(ggplot2::aes(x=time,y=wtmp)) + 
-   ggplot2::ylab("Sea Surface Temp (Celcius)") +
-   ggplot2::xlab("")
-print(p)
-```
+All of the buoy data is pulled from the coastwatch [ERDDAP]('https://coastwatch.pfeg.noaa.gov/erddap/') server. The data set ID is = `cwwcNDBCMet`. The metadata for this data set can be found at [https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html).
 
 
 ## Contact

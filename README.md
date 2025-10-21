@@ -31,48 +31,12 @@ combines many more attributes (than
 pak::pak("NOAA-EDAB/buoydata")
 ```
 
-## Example
+## Data
 
-Find all buoys located between latitude \[41,43\] and longitude
-\[-71,-67\] with a time series of at least 20 years. Then pull and
-process data from a single buoy.
-
-``` r
-library(buoydata)
-
-buoydata::buoyDataWorld |> 
-  dplyr::filter(LAT > 41,LAT < 43) |> 
-  dplyr::filter(LON > -71, LON < -69) |> 
-  dplyr::filter(nYEARS >= 20)
-#> # A tibble: 5 × 13
-#>   ID       Y1    YN nYEARS   LAT   LON STATION_LOC   STATION_NAME TTYPE TIMEZONE
-#>   <chr> <dbl> <dbl>  <dbl> <dbl> <dbl> <chr>         <chr>        <chr> <chr>   
-#> 1 44013  1984  2023     40  42.3 -70.7 BOSTON 16 NM… <NA>         2.1-… E       
-#> 2 44018  2002  2023     22  42.2 -70.2 9 NM North o… CAPE COD     3-me… E       
-#> 3 44029  2004  2023     20  42.5 -70.6 Massachusett… Buoy A01     Moor… E       
-#> 4 bzbm3  2004  2023     20  41.5 -70.7 Woods Hole, … 8447930      Wate… E       
-#> 5 iosn3  1984  2023     40  43.0 -70.6 Isle of Shoa… <NA>         C-MA… E       
-#> # ℹ 3 more variables: OWNER <chr>, OWNERNAME <chr>, COUNTRYCODE <chr>
-```
-
-Lets pull the sea surface temperature (variable name, wtmp) from buoy
-44018 - 9 NM North of Provincetown, MA.
-
-``` r
-buoy_data <- get_buoy_data(buoyid="44018", var = "wtmp")
-```
-
-Then plot the data
-
-``` r
- p <- ggplot2::ggplot(buoy_data) +
-   ggplot2::geom_line(ggplot2::aes(x=time,y=wtmp)) + 
-   ggplot2::ylab("Sea Surface Temp (Celcius)") +
-   ggplot2::xlab("")
-print(p)
-```
-
-<img src="man/figures/README-plotData-1.png" width="100%" />
+All of the buoy data is pulled from the coastwatch
+[ERDDAP]('https://coastwatch.pfeg.noaa.gov/erddap/') server. The data
+set ID is = `cwwcNDBCMet`. The metadata for this data set can be found
+at <https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html>.
 
 ## Contact
 
