@@ -7,3 +7,9 @@
 ^pkgdown$
 ^output
 ^.Rproj
+^.github
+
+# files
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+buoydata.Rproj

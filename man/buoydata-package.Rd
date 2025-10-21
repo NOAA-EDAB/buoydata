@@ -20,6 +20,7 @@ To learn more about using \code{buoydata} click the index below
 Useful links:
 \itemize{
   \item \url{https://github.com/NOAA-EDAB/buoydata}
+  \item \url{https://noaa-edab.github.io/buoydata}
   \item Report bugs at \url{https://github.com/NOAA-EDAB/buoydata/issues}
 }
 
