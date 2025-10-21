@@ -29,5 +29,6 @@ Suggests:
     usethis,
     stringr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    plotly
 VignetteBuilder: knitr
