@@ -2,10 +2,14 @@
 title: "Report from buoydata data pull"
 output: html_document
 params: 
-  df: NA
-  sameDim: NA
-  sameMain: NA
-  mainVars: NA
+  sameDim: NA  
+  dimFields: NA
+  col_name_added: NA
+  col_name_removed: NA
+  removed_IDs: NA
+  added_IDs: NA
+  removed_rows: NA
+  added_rows: NA
 date: "`r Sys.time()`"
 ---
 
@@ -18,24 +22,42 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Do the two data sets have the name number of buoys and the same number of variables?
 
-```{r samedim, echo = F}
+```{r samedim, echo = FALSE}
 params$sameDim
 ```
 
-
-### Same data
-
-Filtering for `r params$mainVars`.
-Are data sets the same?
-
-```{r samemain, echo = F}
-params$sameMain
+```{r samedim2, echo = FALSE}
+params$dimFields
 ```
 
 
-### Differences in values of variables
-```{r diffs, echo = F}
-params$df |> 
+### Field names added or removed
+
+```{r fields, echo = FALSE}
+print(paste0("Fields added: ",params$col_name_added))
+print(paste0("Fields removed: ",params$col_name_removed))
+```
+
+
+### Buoys added or removed
+
+```{r IDs, echo = FALSE}
+print(paste0("IDs added: ",params$added_IDs))
+print(paste0("IDs removed: ",params$removed_IDs))
+```
+
+## Added Rows
+
+```{r addedrows, echo = FALSE}
+params$added_rows |> 
+  gt::gt()
+```
+
+
+## Removed Rows
+
+```{r removedrows, echo = FALSE}
+params$removed_rows |> 
   gt::gt()
 ```
 

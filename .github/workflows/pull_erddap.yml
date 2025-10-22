@@ -4,10 +4,8 @@ on:
   schedule:
     # uses UTC/GMT time (+ 5 hrs)
     ####- cron: "0 17 * * 3" # Every Wednesday at 1200 hrs = 1700 UTC
-    #- cron: "0 */4 * * *" # Every 4th hour on
-    #- cron: "0 6 * * *" # Every day at 1am EST = 0600 GMT
-    #- cron: "26 * * * *" # Every hour on hour
-    #- cron: "0 18 * * 0" # Every Sunday at 1300 hrs = 1800 GMT
+    #- cron: "0 12 1 * *" # Noon UTC on 1st day of month
+    - cron: "0 12 0 * *" # Noon UTC on every day
 
 jobs:
 
@@ -54,7 +52,7 @@ jobs:
       - name: Pull nbdc data
         run: |
           options(timeout = 60 * 60 * 6)
-          source(here::here("data-raw/get_buoyDataWorld.R"))
+          source(here::here("data-raw/create_buoy_data_dataset.R"))
           newData <- create_buoy_data_dataset(exportFile=F,isRunLocal = F)
           saveRDS(newData,here::here("data-raw/new_data.rds"))
         shell: Rscript {0}
@@ -80,7 +78,7 @@ jobs:
       - name: render readme.rmd
         run: |
           options(timeout = 60 * 60 * 6)
-          # rmarkdown::render(here::here("README.Rmd"))
+          #rmarkdown::render(here::here("README.Rmd"))
         shell: Rscript {0}
 
       #- name: Find differences
