@@ -18,10 +18,10 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release', args:'--no-manual --no-build-vignettes'}
-          - {os: windows-latest, r: 'release', args: character()}
-          - {os: ubuntu-latest,   r: 'release', args: NULL}
-          - {os: ubuntu-latest,   r: 'oldrel/1', args: 'c()'}
+          - {os: macOS-latest,   r: 'release'}
+          - {os: windows-latest, r: 'release'}
+          - {os: ubuntu-latest,   r: 'release'}
+          - {os: ubuntu-latest,   r: 'oldrel/1'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -43,8 +43,8 @@ jobs:
           extra-packages: rcmdcheck
 
       - uses: r-lib/actions/check-r-package@v2
-        with:
-          args: ${{ matrix.config.args }} # Injecting the conditional args
+        # with:
+        #   args: ${{ matrix.config.args }} # Injecting the conditional args
 
       - name: Show testthat output
         if: always()
