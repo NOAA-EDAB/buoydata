@@ -1,24 +1,11 @@
-name: ndbc data pull
+name: erddap data pull
 
 on:
-  push:
-    branches:
-      # - main
-      # - master
-       - ddev
-  pull_request:
-    branches:
-      # - main
-      # - master
-       - ddev
-  #schedule:
+  schedule:
     # uses UTC/GMT time (+ 5 hrs)
-    ## put on HOLD until stockSMART have finished the reorganization
     ####- cron: "0 17 * * 3" # Every Wednesday at 1200 hrs = 1700 UTC
-    #- cron: "0 */4 * * *" # Every 4th hour on
-    #- cron: "0 6 * * *" # Every day at 1am EST = 0600 GMT
-    #- cron: "26 * * * *" # Every hour on hour
-    #- cron: "0 18 * * 0" # Every Sunday at 1300 hrs = 1800 GMT
+    #- cron: "0 12 1 * *" # Noon UTC on 1st day of month
+    - cron: "0 12 0 * *" # Noon UTC on every day
 
 jobs:
 
@@ -51,24 +38,23 @@ jobs:
 
       - name: Install packages
         run: |
-          install.packages(c("remotes","here","xml2","stringr","rmarkdown","gt"))
+          install.packages(c("remotes","here","stringr","gt","rmarkdown"))
           remotes::install_github("NOAA-EDAB/buoydata")
         shell: Rscript {0}
 
       - name: Save current rdas
         run: |
-          load(here::here("data/buoyDataWorld.rda"))
-          saveRDS(buoyDataWorld,here::here("data-raw/tempData.rds"))
-          rm(buoyDataWorld)
+          load(here::here("data/buoy_data.rda"))
+          saveRDS(buoy_data,here::here("data-raw/current_data.rds"))
+          rm(buoy_data)
         shell: Rscript {0}
 
       - name: Pull nbdc data
         run: |
           options(timeout = 60 * 60 * 6)
-          source(here::here("data-raw/get_buoyDataWorld.R"))
-          newData <- get_buoyDataWorld(exportFile=F,isRunLocal = F)
-          saveRDS(newData,here::here("data-raw/newData.rds"))
-          #saveRDS(newData,here::here("data-raw/testdata.rds"))
+          source(here::here("data-raw/create_buoy_data_dataset.R"))
+          newData <- create_buoy_data_dataset(exportFile=F,isRunLocal = F)
+          saveRDS(newData,here::here("data-raw/new_data.rds"))
         shell: Rscript {0}
 
       - name: Compare current pull with existing
@@ -92,7 +78,7 @@ jobs:
       - name: render readme.rmd
         run: |
           options(timeout = 60 * 60 * 6)
-          # rmarkdown::render(here::here("README.Rmd"))
+          #rmarkdown::render(here::here("README.Rmd"))
         shell: Rscript {0}
 
       #- name: Find differences
