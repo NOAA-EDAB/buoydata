@@ -19,9 +19,9 @@ jobs:
       matrix:
         config:
           - {os: macOS-latest,   r: 'release', args:'--no-manual --no-build-vignettes'}
-          - {os: windows-latest, r: 'release', args: ''}
-          - {os: ubuntu-latest,   r: 'release', args: ''}
-          - {os: ubuntu-latest,   r: 'oldrel/1', args: ''}
+          - {os: windows-latest, r: 'release'}
+          - {os: ubuntu-latest,   r: 'release'}
+          - {os: ubuntu-latest,   r: 'oldrel/1'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
