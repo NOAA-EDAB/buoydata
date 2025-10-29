@@ -20,7 +20,7 @@ library(buoydata)
 
 All of the buoys hosted by the NDBC (and available on ERDDAP) can be quickly viewed from the bundled data set [buoy_data](../reference/buoy_data.html) which along with the buoys ID, NAME, LAT and LON contain other metadata such as the years of operation, the date/time of the last recorded measurement, and the owners of the buoy 
 
-```{r lazydata, echo = T, eval = TRUE}
+```{r lazydata, echo = TRUE, eval = TRUE}
 buoydata::buoy_data |> 
   dplyr::as_tibble()
 ```
@@ -39,8 +39,7 @@ buoydata::get_variables()
 
 Find all buoys located between latitude [41,43] and longitude [-71,-67] with a time series of at least 20 years. Then pull and process data from a single buoy. 
 
-``` {r searchData, eval=TRUE}
-
+```{r searchData, eval=TRUE}
 buoydata::buoy_data |> 
   dplyr::filter(LAT > 41,LAT < 43) |> 
   dplyr::filter(LON > -71, LON < -69) |> 
@@ -50,7 +49,7 @@ buoydata::buoy_data |>
 
 Lets pull the sea surface temperature (variable name, wtmp) from buoy 44018 - `r buoydata::buoy_data |> dplyr::filter(ID == 44018) |> dplyr::pull(STATION_LOC)`
 
-``` {r getData, eval = TRUE, echo = TRUE}
+```{r getData, eval = TRUE, echo = TRUE}
 buoy_44018 <- buoydata::get_buoy_data(buoyid="44018", var = "wtmp")
 ```
 
