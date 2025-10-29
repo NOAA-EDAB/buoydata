@@ -104,8 +104,8 @@ owners of the buoy</p>
 possible variables can be found using the <code><a href="../reference/get_variables.html">get_variables()</a></code>
 function</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_variables.html">get_variables</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    variable_name data_type           actual_range            description</span></span>
+<code class="sourceCode R"><span><span class="fu">buoydata</span><span class="fu">::</span><span class="fu"><a href="../reference/get_variables.html">get_variables</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt;    variable_name data_type           actual_range            description</span></span>
 <span><span class="co">#&gt; 1            apd     float              0.0, 95.0   Wave Period, Average</span></span>
 <span><span class="co">#&gt; 2           atmp     float           -153.4, 50.0        Air Temperature</span></span>
 <span><span class="co">#&gt; 3            bar     float          800.7, 1198.8           Air Pressure</span></span>
@@ -118,14 +118,14 @@ function</p>
 <span><span class="co">#&gt; 10          ptdy     float            -15.0, 14.7      Pressure Tendency</span></span>
 <span><span class="co">#&gt; 11       station    String                            Station Identifier</span></span>
 <span><span class="co">#&gt; 12          tide     float            -9.37, 6.15            Water Level</span></span>
-<span><span class="co">#&gt; 13          time    double 4910400.0, 1.7612439E9                   Time</span></span>
+<span><span class="co">#&gt; 13          time    double 4910400.0, 1.7617581E9                   Time</span></span>
 <span><span class="co">#&gt; 14           vis     float              0.0, 66.7     Station Visibility</span></span>
 <span><span class="co">#&gt; 15            wd     short                 0, 359         Wind Direction</span></span>
 <span><span class="co">#&gt; 16          wspd     float              0.0, 96.0             Wind Speed</span></span>
 <span><span class="co">#&gt; 17          wspu     float            -98.7, 97.5      Wind Speed, Zonal</span></span>
 <span><span class="co">#&gt; 18          wspv     float            -98.7, 97.5 Wind Speed, Meridional</span></span>
 <span><span class="co">#&gt; 19          wtmp     float            -98.7, 50.0                    SST</span></span>
-<span><span class="co">#&gt; 20          wvht     float             0.0, 92.39            Wave Height</span></span></code></pre></div>
+<span><span class="co">#&gt; 20          wvht     float             0.0, 92.39            Wave Height</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -133,9 +133,8 @@ function</p>
 <p>Find all buoys located between latitude [41,43] and longitude
 [-71,-67] with a time series of at least 20 years. Then pull and process
 data from a single buoy.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu">buoydata</span><span class="fu">::</span><span class="va"><a href="../reference/buoy_data.html">buoy_data</a></span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">buoydata</span><span class="fu">::</span><span class="va"><a href="../reference/buoy_data.html">buoy_data</a></span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">LAT</span> <span class="op">&gt;</span> <span class="fl">41</span>,<span class="va">LAT</span> <span class="op">&lt;</span> <span class="fl">43</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">LON</span> <span class="op">&gt;</span> <span class="op">-</span><span class="fl">71</span>, <span class="va">LON</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">69</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">nYEARS</span> <span class="op">&gt;=</span> <span class="fl">20</span><span class="op">)</span></span>
@@ -152,10 +151,10 @@ data from a single buoy.</p>
 <span><span class="co">#&gt; <span style="color: #949494;">#   COUNTRY &lt;chr&gt;, HULL &lt;chr&gt;, PAYLOAD &lt;chr&gt;, FORECAST &lt;chr&gt;, NOTE &lt;chr&gt;</span></span></span></code></pre></div>
 <p>Lets pull the sea surface temperature (variable name, wtmp) from buoy
 44018 - CAPE COD - 9 NM North of Provincetown, MA</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">buoy_44018</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_buoy_data.html">get_buoy_data</a></span><span class="op">(</span>buoyid<span class="op">=</span><span class="st">"44018"</span>, var <span class="op">=</span> <span class="st">"wtmp"</span><span class="op">)</span></span></code></pre></div>
-<p>Then plot the data</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">buoy_44018</span> <span class="op">&lt;-</span> <span class="fu">buoydata</span><span class="fu">::</span><span class="fu"><a href="../reference/get_buoy_data.html">get_buoy_data</a></span><span class="op">(</span>buoyid<span class="op">=</span><span class="st">"44018"</span>, var <span class="op">=</span> <span class="st">"wtmp"</span><span class="op">)</span></span></code></pre></div>
+<p>Then plot the data</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">buoy_44018</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">time</span>,y<span class="op">=</span><span class="va">wtmp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Sea Surface Temp (Celcius)"</span><span class="op">)</span> <span class="op">+</span></span>

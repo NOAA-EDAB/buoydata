@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   buoydata: buoydata.html
   buoymap: buoymap.html
-last_built: 2025-10-23T18:53Z
+last_built: 2025-10-29T18:21Z
 urls:
   reference: https://noaa-edab.github.io/buoydata/reference
   article: https://noaa-edab.github.io/buoydata/articles
