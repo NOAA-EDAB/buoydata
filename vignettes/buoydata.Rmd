@@ -31,15 +31,18 @@ This data frame can be used to filter out stations of interest
 
 Each buoy measures a different set of variables. A list of the possible variables can be found using the `get_variables()` function
 
-```{r getvars, echo = TRUE, eval = TRUE}
+```{r getvars, echo = TRUE, eval = FALSE}
 buoydata::get_variables()
+```
+```{r displayvars, echo = FALSE, eval = TRUE}
+buoydata:::vars
 ```
 
 ## Example
 
 Find all buoys located between latitude [41,43] and longitude [-71,-67] with a time series of at least 20 years. Then pull and process data from a single buoy. 
 
-```{r searchData, eval=TRUE}
+```{r searchData, echo = TRUE, eval = TRUE}
 buoydata::buoy_data |> 
   dplyr::filter(LAT > 41,LAT < 43) |> 
   dplyr::filter(LON > -71, LON < -69) |> 
@@ -49,8 +52,12 @@ buoydata::buoy_data |>
 
 Lets pull the sea surface temperature (variable name, wtmp) from buoy 44018 - `r buoydata::buoy_data |> dplyr::filter(ID == 44018) |> dplyr::pull(STATION_LOC)`
 
-```{r getData, eval = TRUE, echo = TRUE}
+```{r getData,  echo = TRUE, eval = FALSE}
 buoy_44018 <- buoydata::get_buoy_data(buoyid="44018", var = "wtmp")
+```
+
+```{r internalbuoy, echo = FALSE, eval = TRUE}
+buoy_44018 <- buoydata:::buoy_44018
 ```
 
 Then plot the data
