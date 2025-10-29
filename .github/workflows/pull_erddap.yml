@@ -5,7 +5,11 @@ on:
     # uses UTC/GMT time (+ 5 hrs)
     ####- cron: "0 17 * * 3" # Every Wednesday at 1200 hrs = 1700 UTC
     #- cron: "0 12 1 * *" # Noon UTC on 1st day of month
-    - cron: "0 12 * * *" # Noon UTC on every day
+    - cron: '0 12 * * *' # Noon UTC on every day
+# Optionally, trigger manually from the GitHub Actions UI
+  workflow_dispatch:
+
+
 
 jobs:
 
