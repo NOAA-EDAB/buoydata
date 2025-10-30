@@ -42,8 +42,8 @@ jobs:
 
       - name: Install packages
         run: |
-          install.packages(c("remotes","here","stringr","gt","rmarkdown"))
-          remotes::install_github("NOAA-EDAB/buoydata")
+          install.packages("pak"))
+          pak::pak("NOAA-EDAB/buoydata")
         shell: Rscript {0}
 
       - name: Save current rdas
