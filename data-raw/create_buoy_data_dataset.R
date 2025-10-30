@@ -1,4 +1,4 @@
-#' Gets bouy data from from nbdc
+#' Gets bouy data from from nbdc via ERDDAP
 #'
 #' THIS IS THE NEW FILE USING ERDDAP
 #'
@@ -22,7 +22,7 @@
 #'
 #'
 
-get_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
+create_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
   # ERDDAP url
   erddap_url <- 'https://coastwatch.pfeg.noaa.gov/erddap/'
   datasetid <- "cwwcNDBCMet"
@@ -166,11 +166,11 @@ get_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
   dateCreated <- Sys.time()
   cat(paste0(dateCreated, "\n"), file = here::here("data-raw", fn))
 
-  buoyDataWorld <- main_table
+  buoy_data <- main_table
 
   if (exportFile) {
-    usethis::use_data(buoyDataWorld, overwrite = T)
+    usethis::use_data(buoy_data, overwrite = T)
   }
 
-  return(buoyDataWorld)
+  return(buoy_data)
 }

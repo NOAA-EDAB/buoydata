@@ -42,8 +42,9 @@ jobs:
 
       - name: Install packages
         run: |
-          install.packages(c("remotes","here","stringr","gt","rmarkdown"))
-          remotes::install_github("NOAA-EDAB/buoydata")
+          install.packages("pak")
+          pak::pak(c("here","stringr","usethis","rmarkdown","gt","knitr"))
+          pak::pak("NOAA-EDAB/buoydata")
         shell: Rscript {0}
 
       - name: Save current rdas
@@ -57,7 +58,7 @@ jobs:
         run: |
           options(timeout = 60 * 60 * 6)
           source(here::here("data-raw/create_buoy_data_dataset.R"))
-          newData <- create_buoy_data_dataset(exportFile=F,isRunLocal = F)
+          newData <- create_buoy_data_dataset(exportFile=T,isRunLocal = F)
           saveRDS(newData,here::here("data-raw/new_data.rds"))
         shell: Rscript {0}
 
