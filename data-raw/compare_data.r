@@ -5,8 +5,8 @@
 compare_data <- function() {
   current <- readRDS(here::here("data-raw/current_data.rds"))
   new <- readRDS(here::here("data-raw/new_data.rds"))
-  current <- readRDS(here::here("data-raw/erddap/erddap.rds"))
-  new <- readRDS(here::here("data-raw/erddap/newerddap.rds"))
+  #current <- readRDS(here::here("data-raw/erddap/erddap.rds"))
+  #new <- readRDS(here::here("data-raw/erddap/newerddap.rds"))
 
   # are data sets of the same dimension. May only expect rws to change
   sameDim <- all.equal(dim(current), dim(new))
