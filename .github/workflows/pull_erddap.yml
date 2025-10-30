@@ -54,7 +54,7 @@ jobs:
           rm(buoy_data)
         shell: Rscript {0}
 
-      - name: Pull nbdc data
+      - name: Pull nbdc data via ERDDAP
         run: |
           options(timeout = 60 * 60 * 6)
           source(here::here("data-raw/create_buoy_data_dataset.R"))
