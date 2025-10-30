@@ -43,7 +43,7 @@ jobs:
       - name: Install packages
         run: |
           install.packages("pak")
-          pak::pak(c("here","stringr"))
+          pak::pak(c("here","stringr","usethis","rmarkdown","gt","knitr"))
           pak::pak("NOAA-EDAB/buoydata")
         shell: Rscript {0}
 
