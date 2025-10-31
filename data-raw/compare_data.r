@@ -49,7 +49,7 @@ compare_data <- function() {
 
   cols_current <- names(current)
   cols_new <- names(new)
-  dropped_row <- NA
+  dropped_rows <- NA
   added_rows <- NA
   if (length(col_name_dropped) > 0) {
     dropped_rows <- dplyr::setdiff(
