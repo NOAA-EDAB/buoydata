@@ -3,10 +3,10 @@
 # Only care about difference in ID presence absence
 
 compare_data <- function() {
-  current <- readRDS(here::here("data-raw/current_data.rds"))
-  new <- readRDS(here::here("data-raw/new_data.rds"))
-  #current <- readRDS(here::here("data-raw/erddap/erddap.rds"))
-  #new <- readRDS(here::here("data-raw/erddap/newerddap.rds"))
+  #current <- readRDS(here::here("data-raw/current_data.rds"))
+  #new <- readRDS(here::here("data-raw/new_data.rds"))
+  current <- readRDS(here::here("data-raw/erddap/10292025.rds"))
+  new <- readRDS(here::here("data-raw/erddap/10302025.rds"))
 
   # are data sets of the same dimension. May only expect rws to change
   sameDim <- all.equal(dim(current), dim(new))
@@ -72,6 +72,26 @@ compare_data <- function() {
     )
     dropped_rows <- rbind(dropped_rows, dropped_rows2)
     added_rows <- rbind(added_rows, added_rows2)
+  }
+
+  # checks for empty character strings
+  if (identical(col_name_added, character(0))) {
+    col_name_added <- NA
+  }
+  if (identical(col_name_dropped, character(0))) {
+    col_name_dropped <- NA
+  }
+  if (identical(dropped, character(0))) {
+    dropped <- NA
+  }
+  if (identical(added, character(0))) {
+    added <- NA
+  }
+  if (identical(dropped_rows, character(0))) {
+    dropped_rows <- NA
+  }
+  if (identical(added_rows, character(0))) {
+    added_rows <- NA
   }
 
   df <- list()
