@@ -3,10 +3,10 @@
 # Only care about difference in ID presence absence
 
 compare_data <- function() {
-  #current <- readRDS(here::here("data-raw/current_data.rds"))
-  #new <- readRDS(here::here("data-raw/new_data.rds"))
-  current <- readRDS(here::here("data-raw/erddap/10292025.rds"))
-  new <- readRDS(here::here("data-raw/erddap/10302025.rds"))
+  current <- readRDS(here::here("data-raw/current_data.rds"))
+  new <- readRDS(here::here("data-raw/new_data.rds"))
+  # current <- readRDS(here::here("data-raw/erddap/10292025.rds"))
+  # new <- readRDS(here::here("data-raw/erddap/10302025.rds"))
 
   # are data sets of the same dimension. May only expect rws to change
   sameDim <- all.equal(dim(current), dim(new))
