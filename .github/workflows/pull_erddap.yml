@@ -5,11 +5,12 @@ on:
     # uses UTC/GMT time (+ 5 hrs)
     ####- cron: "0 17 * * 3" # Every Wednesday at 1200 hrs = 1700 UTC
     #- cron: "0 12 1 * *" # Noon UTC on 1st day of month
-    - cron: '0 10 * * *' # 10am UTC on every day (5 am EST)
+    - cron: '0 17 * * 3' # 10am UTC on every Wednesday (5 am EST)
 # Optionally, trigger manually from the GitHub Actions UI
   workflow_dispatch:
 
-
+permissions:
+  contents: write
 
 jobs:
 
@@ -69,21 +70,21 @@ jobs:
         run: |
           options(timeout = 60 * 60 * 6)
           source(here::here("data-raw/compare_data.r"))
-          # source(here::here("data-raw/update_description.R"))
-          # source(here::here("data-raw/update_news.R"))
+          source(here::here("data-raw/update_description.R"))
+          source(here::here("data-raw/update_news.R"))
           diffs <- compare_data()
-          #version <- update_description(diffs,digit=3)
-          #update_news(version,diffs)
+          version <- update_description(diffs,digit=3)
+          update_news(version,diffs)
           rmarkdown::render(here::here("data-raw/sendAsEmail.Rmd"),
                     params = diffs)
 
-          #saveRDS(version,here::here("data-raw/version.rds"))
+          saveRDS(version,here::here("data-raw/version.rds"))
         shell: Rscript {0}
 
       - name: render readme.rmd
         run: |
           options(timeout = 60 * 60 * 6)
-          #rmarkdown::render(here::here("README.Rmd"))
+          rmarkdown::render(here::here("README.Rmd"))
         shell: Rscript {0}
 
       #- name: Find differences
