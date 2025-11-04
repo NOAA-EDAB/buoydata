@@ -18,30 +18,30 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-# Same dimension
-
 Do the two data sets have the name number of buoys and the same number of variables?
 
 ```{r samedim, echo = FALSE}
-params$sameDim
+paste0("Are the table dimensions the same: ",params$sameDim)
 ```
 
 ```{r samedim2, echo = FALSE}
+message("Table differences:")
 params$dimFields
 ```
 
 
-### Field names added or removed
+## Field names added or removed
 
-```{r fields, echo = FALSE}
+```{r fieldsnms, echo = FALSE}
 print(paste0("Fields added: ",params$col_name_added))
 print(paste0("Fields removed: ",params$col_name_removed))
 ```
 
 
-### Buoys added or removed
+## Buoys added or removed
 
 ```{r IDs, echo = FALSE}
+
 print(paste0("IDs added: ",params$added_IDs))
 print(paste0("IDs removed: ",params$removed_IDs))
 ```
@@ -49,16 +49,25 @@ print(paste0("IDs removed: ",params$removed_IDs))
 ## Added Rows
 
 ```{r addedrows, echo = FALSE}
-params$added_rows |> 
-  gt::gt()
+if (is.na(params$added_rows)) {
+  message("No rows added")
+} else {
+  params$added_rows |>
+    gt::gt()
+}
+
 ```
 
 
 ## Removed Rows
 
 ```{r removedrows, echo = FALSE}
-params$removed_rows |> 
-  gt::gt()
+if (is.na(params$removed_rows)) {
+  message("No rows removed")
+} else {
+  params$removed_rows |>
+    gt::gt()
+}
 ```
 
 

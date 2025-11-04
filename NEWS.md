@@ -1,4 +1,4 @@
-# buoydata 1.0
+# buoydata 1.0.0
 
 NDBC data is pulled via a cron job and hosted on ERDDAP. The package now pulls from ERDDAP rather than scraping the NDBC site
 

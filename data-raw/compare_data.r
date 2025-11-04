@@ -5,6 +5,8 @@
 compare_data <- function() {
   current <- readRDS(here::here("data-raw/current_data.rds"))
   new <- readRDS(here::here("data-raw/new_data.rds"))
+  # current <- readRDS(here::here("data-raw/erddap/10292025.rds"))
+  # new <- readRDS(here::here("data-raw/erddap/10302025.rds"))
   # current <- readRDS(here::here("data-raw/erddap/erddap.rds"))
   # new <- readRDS(here::here("data-raw/erddap/newerddap.rds"))
 
@@ -43,12 +45,14 @@ compare_data <- function() {
 
   # rows diffs based on current columns
   # if new fields were included the whole data set would be a diff.
-  # filter out col diffferences and compare whats left
+  # filter out col differences and compare whats left
   new <- new |> dplyr::select(-lastMeasurement)
   current <- current |> dplyr::select(-lastMeasurement)
 
   cols_current <- names(current)
   cols_new <- names(new)
+  dropped_rows <- NA
+  added_rows <- NA
   if (length(col_name_dropped) > 0) {
     dropped_rows <- dplyr::setdiff(
       current |> dplyr::select(dplyr::all_of(cols_new)),
@@ -60,14 +64,36 @@ compare_data <- function() {
     )
   }
   if (length(col_name_added) > 0) {
-    dropped_rows <- dplyr::setdiff(
+    dropped_rows2 <- dplyr::setdiff(
       current,
       new |> dplyr::select(dplyr::all_of(cols))
     )
-    added_rows <- dplyr::setdiff(
+    added_rows2 <- dplyr::setdiff(
       new |> dplyr::select(dplyr::all_of(cols)),
       current
     )
+    dropped_rows <- rbind(dropped_rows, dropped_rows2)
+    added_rows <- rbind(added_rows, added_rows2)
+  }
+
+  # checks for empty character strings
+  if (identical(col_name_added, character(0))) {
+    col_name_added <- NA
+  }
+  if (identical(col_name_dropped, character(0))) {
+    col_name_dropped <- NA
+  }
+  if (identical(dropped, character(0))) {
+    dropped <- NA
+  }
+  if (identical(added, character(0))) {
+    added <- NA
+  }
+  if (identical(dropped_rows, character(0))) {
+    dropped_rows <- NA
+  }
+  if (identical(added_rows, character(0))) {
+    added_rows <- NA
   }
 
   df <- list()

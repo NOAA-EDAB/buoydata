@@ -165,6 +165,20 @@ create_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
   file.create(here::here("data-raw", fn))
   dateCreated <- Sys.time()
   cat(paste0(dateCreated, "\n"), file = here::here("data-raw", fn))
+  cat(
+    paste0("Number of Stations read = ", nrow(station_meta), "\n"),
+    file = here::here("data-raw", fn),
+    append = TRUE
+  )
+  cat(
+    paste0(
+      "number of Stations in buoydata = ",
+      nrow(buoydata::buoy_data),
+      "\n"
+    ),
+    file = here::here("data-raw", fn),
+    append = TRUE
+  )
 
   buoy_data <- main_table
 
