@@ -13,3 +13,6 @@ docs
 inst/doc
 /doc/
 /Meta/
+data-raw/old
+data-raw/erddap
+
