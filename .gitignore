@@ -6,6 +6,10 @@
 # files
 *.Rproj
 *.html
+# workflow testing
+data-raw/current_data.rds
+data-raw/new_data.rds
+data-raw/localdatapull.txt
 
 # folders
 output
