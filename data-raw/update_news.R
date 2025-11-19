@@ -37,20 +37,20 @@ update_news <- function(version, compare) {
     writeLines("", con)
 
     # write changes to top of file then write old news
-    if (!is.null(compare$added_rows) && nrow(compare$added_rows) > 0) {
+    if (!identical(compare$added_IDs, NA) && nrow(compare$added_IDs) > 0) {
       writeLines("### Stations added ", con)
       writeLines("", con)
 
-      reduce_fields_add <- compare$added_rows |>
+      reduce_fields_add <- compare$added_IDs |>
         dplyr::select(ID, Y1, YN, nYEARS, LAT, LON, STATION_LOC)
 
       write_to_news(reduce_fields_add, con)
     }
-    if (!is.null(compare$removed_rows) && nrow(compare$removed_rows) > 0) {
+    if (!identical(compare$removed_IDs, NA) && nrow(compare$removed_IDs) > 0) {
       writeLines("### Stations removed ", con)
       writeLines("", con)
 
-      reduce_fields_remove <- compare$removed_rows |>
+      reduce_fields_remove <- compare$removed_IDs |>
         dplyr::select(ID, Y1, YN, nYEARS, LAT, LON, STATION_LOC)
 
       write_to_news(reduce_fields_remove, con)
