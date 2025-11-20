@@ -8,8 +8,6 @@ params:
   col_name_removed: NA
   removed_IDs: NA
   added_IDs: NA
-  removed_rows: NA
-  added_rows: NA
 date: "`r Sys.time()`"
 ---
 
@@ -38,36 +36,29 @@ print(paste0("Fields removed: ",params$col_name_removed))
 ```
 
 
-## Buoys added or removed
+## Buoys added 
 
-```{r IDs, echo = FALSE}
-
-print(paste0("IDs added: ",params$added_IDs))
-print(paste0("IDs removed: ",params$removed_IDs))
-```
-
-## Added Rows
-
-```{r addedrows, echo = FALSE}
-if (is.na(params$added_rows)) {
-  message("No rows added")
+```{r IDsadded, echo = FALSE}
+if (identical(params$added_IDs,NA)) {
+  message("No Stations added")
 } else {
-  params$added_rows |>
+  params$added_IDs |>
     gt::gt()
 }
 
 ```
 
+## Buoys removed
 
-## Removed Rows
+```{r IDsremoved, echo = FALSE}
 
-```{r removedrows, echo = FALSE}
-if (is.na(params$removed_rows)) {
-  message("No rows removed")
+if (identical(params$removed_IDs,NA)) {
+  message("No Stations removed")
 } else {
-  params$removed_rows |>
+  params$removed_IDs |>
     gt::gt()
 }
+
 ```
 
 

@@ -43,38 +43,38 @@ compare_data <- function() {
     added <- NA
   }
 
-  # rows diffs based on current columns
-  # if new fields were included the whole data set would be a diff.
-  # filter out col differences and compare whats left
-  new <- new |> dplyr::select(-lastMeasurement)
-  current <- current |> dplyr::select(-lastMeasurement)
-
-  cols_current <- names(current)
-  cols_new <- names(new)
-  dropped_rows <- NA
-  added_rows <- NA
-  if (length(col_name_dropped) > 0) {
-    dropped_rows <- dplyr::setdiff(
-      current |> dplyr::select(dplyr::all_of(cols_new)),
-      new
-    )
-    added_rows <- dplyr::setdiff(
-      new,
-      current |> dplyr::select(dplyr::all_of(cols_new))
-    )
-  }
-  if (length(col_name_added) > 0) {
-    dropped_rows2 <- dplyr::setdiff(
-      current,
-      new |> dplyr::select(dplyr::all_of(cols))
-    )
-    added_rows2 <- dplyr::setdiff(
-      new |> dplyr::select(dplyr::all_of(cols)),
-      current
-    )
-    dropped_rows <- rbind(dropped_rows, dropped_rows2)
-    added_rows <- rbind(added_rows, added_rows2)
-  }
+  # # rows diffs based on current columns
+  # # if new fields were included the whole data set would be a diff.
+  # # filter out col differences and compare whats left
+  # new <- new |> dplyr::select(-lastMeasurement)
+  # current <- current |> dplyr::select(-lastMeasurement)
+  #
+  # cols_current <- names(current)
+  # cols_new <- names(new)
+  # dropped_rows <- NA
+  # added_rows <- NA
+  # if (length(col_name_dropped) > 0) {
+  #   dropped_rows <- dplyr::setdiff(
+  #     current |> dplyr::select(dplyr::all_of(cols_new)),
+  #     new
+  #   )
+  #   added_rows <- dplyr::setdiff(
+  #     new,
+  #     current |> dplyr::select(dplyr::all_of(cols_new))
+  #   )
+  # }
+  # if (length(col_name_added) > 0) {
+  #   dropped_rows2 <- dplyr::setdiff(
+  #     current,
+  #     new |> dplyr::select(dplyr::all_of(cols))
+  #   )
+  #   added_rows2 <- dplyr::setdiff(
+  #     new |> dplyr::select(dplyr::all_of(cols)),
+  #     current
+  #   )
+  #   dropped_rows <- rbind(dropped_rows, dropped_rows2)
+  #   added_rows <- rbind(added_rows, added_rows2)
+  # }
 
   # checks for empty character strings
   if (identical(col_name_added, character(0))) {
@@ -89,12 +89,12 @@ compare_data <- function() {
   if (identical(added, character(0))) {
     added <- NA
   }
-  if (identical(dropped_rows, character(0))) {
-    dropped_rows <- NA
-  }
-  if (identical(added_rows, character(0))) {
-    added_rows <- NA
-  }
+  # if (identical(dropped_rows, character(0))) {
+  #   dropped_rows <- NA
+  # }
+  # if (identical(added_rows, character(0))) {
+  #   added_rows <- NA
+  # }
 
   df <- list()
   df$sameDim <- sameDim
@@ -103,8 +103,8 @@ compare_data <- function() {
   df$col_name_removed <- col_name_dropped
   df$removed_IDs <- dropped
   df$added_IDs <- added
-  df$removed_rows <- dropped_rows
-  df$added_rows <- added_rows
+  # df$removed_rows <- dropped_rows
+  # df$added_rows <- added_rows
 
   return(df)
 }
