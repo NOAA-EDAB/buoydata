@@ -8,6 +8,8 @@
 [![gh-pages](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml)
 [![gitleaks](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml)
 [![R-CMD-check](https://github.com/NOAA-EDAB/buoydata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/R-CMD-check.yaml)
+[![ERDDAP
+pull](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml)
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data
