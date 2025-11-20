@@ -21,6 +21,13 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: false
 
     steps:
+
+      - name: Get Runner IP Address
+        run: |
+          RUNNER_IP=$(curl -s https://api.ipify.org)
+          echo "The runner's external IPv4 address is: $RUNNER_IP"
+          echo "RUNNER_IP=$RUNNER_IP" >> $GITHUB_ENV
+
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
