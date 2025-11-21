@@ -128,6 +128,7 @@ jobs:
            git add DESCRIPTION
            git commit -m "automated commit from pull_erddap yml"
            git push
+        shell: bash
 
       - name: create gh-release
         run: |
