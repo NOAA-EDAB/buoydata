@@ -94,12 +94,6 @@ jobs:
           rmarkdown::render(here::here("README.Rmd"))
         shell: Rscript {0}
 
-      #- name: Find differences
-      # Create text explaining differences and append to news.md and release notes
-
-      #- name: Find differences
-      # Create text explaining differences and append to news.md and release notes
-
       # Send email indicating if anything has changed
       - name: Send email
         uses: dawidd6/action-send-mail@v3
@@ -122,25 +116,25 @@ jobs:
 
           #attachments: ./data-raw/sendAsEmail.html
 
-      # - name: commit data files
-      #   run: |
-      #     git config user.name github-actions
-      #     git config user.email github-actions@github.com
-      #     git add data/buoyDataWorld.rda
-      #     git add data-raw/datapull.txt
-      #     git add README.Rmd
-      #     git add README.Rmd
-      #     git add NEWS.md
-      #     git add DESCRIPTION
-      #     git commit -m "automated commit from pullLazyData yml"
-      #     git push
+       - name: commit data files
+         run: |
+           git config user.name github-actions
+           git config user.email github-actions@github.com
+           git add data/buoy_data.rda
+           git add data-raw/datapull.txt
+           git add README.Rmd
+           git add README.Rmd
+           git add NEWS.md
+           git add DESCRIPTION
+           git commit -m "automated commit from pull_erddap yml"
+           git push
 
-      # - name: create gh-release
-      #   run: |
-      #       version <- readRDS(here::here("data-raw/version.rds"))
-      #       if(!is.null(version)){
-      #       usethis::use_github_release(publish = T)
-      #       }
-      #   shell: Rscript {0}
+       - name: create gh-release
+         run: |
+             version <- readRDS(here::here("data-raw/version.rds"))
+             if(!is.null(version)){
+                usethis::use_github_release(publish = T)
+             }
+         shell: Rscript {0}
 
 
