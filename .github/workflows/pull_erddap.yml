@@ -5,7 +5,7 @@ on:
     # uses UTC/GMT time (+ 5 hrs)
     ####- cron: "0 17 * * 3" # Every Wednesday at 1200 hrs = 1700 UTC
     #- cron: "0 12 1 * *" # Noon UTC on 1st day of month
-    - cron: '0 17 * * 3' # 10am UTC on every Wednesday (5 am EST)
+    - cron: '0 10 * * 2' # 10am UTC on every Wednesday (5 am EST)
 # Optionally, trigger manually from the GitHub Actions UI
   workflow_dispatch:
 
@@ -116,25 +116,25 @@ jobs:
 
           #attachments: ./data-raw/sendAsEmail.html
 
-       - name: commit data files
-         run: |
+      - name: commit data files
+        run: |
            git config user.name github-actions
            git config user.email github-actions@github.com
            git add data/buoy_data.rda
            git add data-raw/datapull.txt
            git add README.Rmd
-           git add README.Rmd
+           git add README.md
            git add NEWS.md
            git add DESCRIPTION
            git commit -m "automated commit from pull_erddap yml"
            git push
 
-       - name: create gh-release
-         run: |
+      - name: create gh-release
+        run: |
              version <- readRDS(here::here("data-raw/version.rds"))
              if(!is.null(version)){
                 usethis::use_github_release(publish = T)
              }
-         shell: Rscript {0}
+        shell: Rscript {0}
 
 
