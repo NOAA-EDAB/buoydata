@@ -15,7 +15,7 @@ lazily loaded station description data provided with the package
 combines many more attributes (than
 [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
 
-*Date of most recent data pull: 2025-11-21*
+*Date of most recent data pull: 2025-12-02*
 
 ## Installation
 
@@ -35,18 +35,19 @@ data from the [NDBC](https://www.ndbc.noaa.gov/) site. The data you
 retrieve using this package will be ALL data from a particular buoy up
 to the most recent measurement available.
 
-To view the time series length available for all station visually (on an
+To view the available data (by year) for all station visually (on an
 interactive world map) see the
 [`vignette("buoymap")`](https://noaa-edab.github.io/buoydata/articles/buoymap.md)
 
-If you observer a discrepancy between the data on the NDBC website and
+If you observe a discrepancy between the data on the NDBC website and
 what is available in this package, first check to see if it is available
 on
 [ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html)
 or use
 [`get_buoy_data()`](https://noaa-edab.github.io/buoydata/reference/get_buoy_data.md)
 from this package. If it is not please contact `erd.data at noaa.gov`
-otherwise create a data issue
+otherwise create a [data
+issue](https://github.com/NOAA-EDAB/buoydata/issues)
 
 ## Reference
 

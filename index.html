@@ -69,7 +69,7 @@
 <p>The goal of <code>buoydata</code> is to easily download and process buoy data hosted by <a href="https://www.ndbc.noaa.gov/" class="external-link">National Data Buoy Center</a>.</p>
 <p><strong>Note: the <a href="https://github.com/ropensci/rnoaa" class="external-link">rnoaa</a> package also has functions to get buoy data. The difference is that (in <a href="https://github.com/ropensci/rnoaa" class="external-link">rnoaa</a>) only one years worth of data can be downloaded at any time from a single buoy. As of 2023 <a href="https://github.com/ropensci/rnoaa" class="external-link">rnoaa</a> is no longer officially supported</strong></p>
 <p><code>buoydata</code> downloads all of the buoys data from ERDDAP. In addition the lazily loaded station description data provided with the package combines many more attributes (than <a href="https://github.com/ropensci/rnoaa" class="external-link">rnoaa</a>) by which to filter.</p>
-<p><em>Date of most recent data pull: 2025-11-21</em></p>
+<p><em>Date of most recent data pull: 2025-12-02</em></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -81,8 +81,8 @@
 </h2>
 <p>All of the buoy data is pulled from the coastwatch <a href="'https://coastwatch.pfeg.noaa.gov/erddap/'" class="external-link">ERDDAP</a> server. The data set ID is = <code>cwwcNDBCMet</code>. The metadata for this data set can be found at <a href="https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html" class="external-link uri">https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html</a>.</p>
 <p>The ERDDAP server retrieves and combines historic data and real-time data from the <a href="https://www.ndbc.noaa.gov/" class="external-link">NDBC</a> site. The data you retrieve using this package will be ALL data from a particular buoy up to the most recent measurement available.</p>
-<p>To view the time series length available for all station visually (on an interactive world map) see the <code><a href="articles/buoymap.html">vignette("buoymap")</a></code></p>
-<p>If you observer a discrepancy between the data on the NDBC website and what is available in this package, first check to see if it is available on <a href="https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html" class="external-link">ERDDAP</a> or use <code><a href="reference/get_buoy_data.html">get_buoy_data()</a></code> from this package. If it is not please contact <code>erd.data at noaa.gov</code> otherwise create a data issue</p>
+<p>To view the available data (by year) for all station visually (on an interactive world map) see the <code><a href="articles/buoymap.html">vignette("buoymap")</a></code></p>
+<p>If you observe a discrepancy between the data on the NDBC website and what is available in this package, first check to see if it is available on <a href="https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html" class="external-link">ERDDAP</a> or use <code><a href="reference/get_buoy_data.html">get_buoy_data()</a></code> from this package. If it is not please contact <code>erd.data at noaa.gov</code> otherwise create a <a href="https://github.com/NOAA-EDAB/buoydata/issues" class="external-link">data issue</a></p>
 </div>
 <div class="section level2">
 <h2 id="reference">Reference<a class="anchor" aria-label="anchor" href="#reference"></a>
