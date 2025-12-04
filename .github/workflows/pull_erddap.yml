@@ -1,4 +1,4 @@
-name: erddap data pull
+name: ERDDAP\u2122 data pull
 
 on:
   schedule:
@@ -55,6 +55,14 @@ jobs:
           pak::pak("NOAA-EDAB/buoydata")
         shell: Rscript {0}
 
+      - name: Check IP range
+        run: |
+          pak::pak(ipaddress)
+
+
+        shell: Rscript {0}
+
+
       - name: Save current rdas
         run: |
           load(here::here("data/buoy_data.rda"))
@@ -105,7 +113,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
 
-          subject: Github Actions job result
+          subject: ERDDAP pull
           to: andrew.beet@noaa.gov
 
           from: buoyData GitHub

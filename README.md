@@ -8,7 +8,7 @@
 [![gh-pages](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml)
 [![gitleaks](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml)
 [![R-CMD-check](https://github.com/NOAA-EDAB/buoydata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/R-CMD-check.yaml)
-[![ERDDAP
+[![ERDDAP ™
 pull](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml)
 <!-- badges: end -->
 
@@ -22,8 +22,8 @@ can be downloaded at any time from a single buoy. As of 2023
 [rnoaa](https://github.com/ropensci/rnoaa) is no longer officially
 supported**
 
-`buoydata` downloads all of the buoys data from ERDDAP. In addition the
-lazily loaded station description data provided with the package
+`buoydata` downloads all of the buoys data from ERDDAP ™. In addition
+the lazily loaded station description data provided with the package
 combines many more attributes (than
 [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
 
@@ -37,12 +37,12 @@ pak::pak("NOAA-EDAB/buoydata")
 
 ## Data
 
-All of the buoy data is pulled from the coastwatch
-[ERDDAP]('https://coastwatch.pfeg.noaa.gov/erddap/') server. The data
-set ID is = `cwwcNDBCMet`. The metadata for this data set can be found
-at <https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html>.
+All of the buoy data is pulled from the coastwatch [ERDDAP
+™]('https://coastwatch.pfeg.noaa.gov/erddap/') server. The data set ID
+is = `cwwcNDBCMet`. The metadata for this data set can be found at
+<https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html>.
 
-The ERDDAP server retrieves and combines historic data and real-time
+The ERDDAP ™ server retrieves and combines historic data and real-time
 data from the [NDBC](https://www.ndbc.noaa.gov/) site. The data you
 retrieve using this package will be ALL data from a particular buoy up
 to the most recent measurement available.
@@ -52,9 +52,9 @@ interactive world map) see the `vignette("buoymap")`
 
 If you observe a discrepancy between the data on the NDBC website and
 what is available in this package, first check to see if it is available
-on
-[ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html)
-or use `get_buoy_data()` from this package. If it is not please contact
+on [ERDDAP
+™](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html) or
+use `get_buoy_data()` from this package. If it is not please contact
 `erd.data at noaa.gov` otherwise create a [data
 issue](https://github.com/NOAA-EDAB/buoydata/issues)
 
