@@ -113,7 +113,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
 
-          subject: Github Actions job result
+          subject: ERDDAP pull
           to: andrew.beet@noaa.gov
 
           from: buoyData GitHub
