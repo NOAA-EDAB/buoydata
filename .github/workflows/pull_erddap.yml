@@ -1,4 +1,4 @@
-name: erddap data pull
+name: ERDDAP\u2122 data pull
 
 on:
   schedule:
@@ -54,6 +54,14 @@ jobs:
           pak::pak(c("here","stringr","usethis","rmarkdown","gt","knitr"))
           pak::pak("NOAA-EDAB/buoydata")
         shell: Rscript {0}
+
+      - name: Check IP range
+        run: |
+          pak::pak(ipaddress)
+
+
+        shell: Rscript {0}
+
 
       - name: Save current rdas
         run: |

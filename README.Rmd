@@ -16,14 +16,14 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![gh-pages](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pkgdown.yml) [![gitleaks](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/secretScan.yml) [![R-CMD-check](https://github.com/NOAA-EDAB/buoydata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/R-CMD-check.yaml)
-[![ERDDAP pull](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml)
+[![ERDDAP `r "\u2122"` pull](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml)
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data hosted by [National Data Buoy Center](https://www.ndbc.noaa.gov/).
 
 **Note: the [rnoaa](https://github.com/ropensci/rnoaa) package also has functions to get buoy data. The difference is that (in [rnoaa](https://github.com/ropensci/rnoaa)) only one years worth of data can be downloaded at any time from a single buoy. As of 2023 [rnoaa](https://github.com/ropensci/rnoaa) is no longer officially supported**
 
-`buoydata` downloads all of the buoys data from ERDDAP. In addition the lazily loaded station description data provided with the package combines many more attributes (than [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter. 
+`buoydata` downloads all of the buoys data from ERDDAP `r "\u2122"`. In addition the lazily loaded station description data provided with the package combines many more attributes (than [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter. 
 
 
 
@@ -38,13 +38,13 @@ pak::pak("NOAA-EDAB/buoydata")
 
 ## Data
 
-All of the buoy data is pulled from the coastwatch [ERDDAP]('https://coastwatch.pfeg.noaa.gov/erddap/') server. The data set ID is = `cwwcNDBCMet`. The metadata for this data set can be found at [https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html).
+All of the buoy data is pulled from the coastwatch [ERDDAP `r "\u2122"`]('https://coastwatch.pfeg.noaa.gov/erddap/') server. The data set ID is = `cwwcNDBCMet`. The metadata for this data set can be found at [https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html).
 
-The ERDDAP server retrieves and combines historic data and real-time data from the [NDBC](https://www.ndbc.noaa.gov/) site. The data you retrieve using this package will be ALL data from a particular buoy up to the most recent measurement available.
+The ERDDAP `r "\u2122"` server retrieves and combines historic data and real-time data from the [NDBC](https://www.ndbc.noaa.gov/) site. The data you retrieve using this package will be ALL data from a particular buoy up to the most recent measurement available.
 
 To view the available data (by year) for all station visually (on an interactive world map) see the `vignette("buoymap")`
 
-If you observe a discrepancy between the data on the NDBC website and what is available in this package, first check to see if it is available on [ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html) or use `get_buoy_data()` from this package. If it is not please contact `erd.data at noaa.gov` otherwise create a [data issue](https://github.com/NOAA-EDAB/buoydata/issues)
+If you observe a discrepancy between the data on the NDBC website and what is available in this package, first check to see if it is available on [ERDDAP `r "\u2122"`](https://coastwatch.pfeg.noaa.gov/erddap/tabledap/cwwcNDBCMet.html) or use `get_buoy_data()` from this package. If it is not please contact `erd.data at noaa.gov` otherwise create a [data issue](https://github.com/NOAA-EDAB/buoydata/issues)
 
 ## Reference
 
