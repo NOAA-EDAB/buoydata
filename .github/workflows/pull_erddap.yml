@@ -55,14 +55,6 @@ jobs:
           pak::pak("NOAA-EDAB/buoydata")
         shell: Rscript {0}
 
-      - name: Check IP range
-        run: |
-          pak::pak(ipaddress)
-
-
-        shell: Rscript {0}
-
-
       - name: Save current rdas
         run: |
           load(here::here("data/buoy_data.rda"))
