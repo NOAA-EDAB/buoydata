@@ -30,10 +30,11 @@ jobs:
 
       - name: Check ERDDAP Server Status
         run: |
-        # Try 3 times with a 20-second delay before giving up and failing
           curl --retry 3 --retry-delay 20 --connect-timeout 10 \
                -o /dev/null -s -w "%{http_code}" \
                'https://coastwatch.pfeg.noaa.gov/erddap/index.html' | grep -q "200" || (echo "Server Down" && exit 1)
+#         Try 3 times with a 20-second delay before giving up and failing
+
         shell: bash
 
       - name: Checkout repo
