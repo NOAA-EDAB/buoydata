@@ -30,14 +30,10 @@ jobs:
 
       - name: Check ERDDAP Server Status
         run: |
-          STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}" 'https://coastwatch.pfeg.noaa.gov/erddap/index.html')
-          echo "Server returned status: $STATUS_CODE"
-
-          if [ "$STATUS_CODE" -ne 200 ]; then
-            echo "Error: Server is not returning 200 OK"
-            exit 1
-          fi
-
+        # Try 3 times with a 20-second delay before giving up and failing
+          curl --retry 3 --retry-delay 20 --connect-timeout 10 \
+               -o /dev/null -s -w "%{http_code}" \
+               'https://coastwatch.pfeg.noaa.gov/erddap/index.html' | grep -q "200" || (echo "Server Down" && exit 1)
         shell: bash
 
       - name: Checkout repo
