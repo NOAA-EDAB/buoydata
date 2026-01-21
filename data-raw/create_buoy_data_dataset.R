@@ -130,6 +130,8 @@ create_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
           return(NULL)
         }
       )
+      # try again in 20 seconds
+      Sys.Sleep(20)
     }
 
     yrs <- lubridate::year(d$time) |>
@@ -146,6 +148,9 @@ create_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
 
     station_meta <-
       rbind(station_meta, stationi_meta)
+
+    # pause so dont hammer ERDDAP with requests
+    Sys.sleep(1)
   }
 
   # join table with metadata

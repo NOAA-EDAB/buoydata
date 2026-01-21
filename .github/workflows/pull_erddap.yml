@@ -28,6 +28,18 @@ jobs:
           echo "RUNNER_IP=$RUNNER_IP" >> $GITHUB_ENV
         shell: bash
 
+      - name: Check ERDDAP Server Status
+        run: |
+          STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}" 'https://coastwatch.pfeg.noaa.gov/erddap/index.html')
+          echo "Server returned status: $STATUS_CODE"
+
+          if [ "$STATUS_CODE" -ne 200 ]; then
+            echo "Error: Server is not returning 200 OK"
+            exit 1
+          fi
+
+        shell: bash
+
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
@@ -42,6 +54,7 @@ jobs:
           sudo apt-get install libcurl4-openssl-dev libgit2-dev
 #          sudo apt-get install  libgdal-dev libcurl4-gnutls-dev libgit2-dev libudunits2-dev libharfbuzz-dev libfribidi-dev
         shell: bash
+
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
