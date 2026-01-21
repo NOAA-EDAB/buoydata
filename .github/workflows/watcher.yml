@@ -15,7 +15,7 @@ jobs:
       actions: write
     steps:
       - name: Check Conclusion
-        run: echo "Previous workflow concluded with: ${{ github.event.workflow_run.conclusion }}. Restarting main job."
+        run: echo Previous workflow concluded with: ${{ github.event.workflow_run.conclusion }}. Restarting main job.
 
       - name: Dispatch New Workflow Run
         uses: actions/github-script@v7
