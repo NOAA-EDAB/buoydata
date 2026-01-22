@@ -126,12 +126,13 @@ create_buoy_data_dataset <- function(exportFile = F, isRunLocal = T) {
         },
         error = function(e) {
           message("An error occurred: ", conditionMessage(e))
-          message(paste0("Attempt # ", attempt))
+          message(paste0("Attempt # ", attempt, " afte a 10 second sleep"))
+          Sys.sleep(10)
+
           return(NULL)
         }
       )
       # try again in 20 seconds
-      Sys.sleep(20)
     }
 
     yrs <- lubridate::year(d$time) |>
