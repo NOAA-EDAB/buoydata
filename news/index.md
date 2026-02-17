@@ -1,5 +1,18 @@
 # Changelog
 
+## buoydata 1.0.2
+
+Data pull: January 22, 2026
+
+#### Stations added
+
+- 42027 - C23 - FLRACEP nWFS Buoy, 45m isobath: \[29.045,-85.305\].
+  2025-2026 (2 yrs).
+- 42028 - C24 - FLRACEP nWFS Buoy, 58m isobath: \[29.745,-86.227\].
+  2025-2026 (2 yrs).
+- BCFM2 - Brewerton Channel Range Front Light (8574831):
+  \[39.205,-76.524\]. 2025-2026 (2 yrs).
+
 ## buoydata 1.0.1
 
 Data pull: November 21, 2025
