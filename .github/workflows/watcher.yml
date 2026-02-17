@@ -29,7 +29,7 @@ jobs:
             github.rest.actions.create_workflow_dispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: 'your_main_filename.yml', # Replace with your ACTUAL filename (e.g., main.yml)
+              workflow_id: 'pull_erddap.yml', // Replace with your ACTUAL filename (e.g., main.yml)
               ref: 'main'
             });
 
