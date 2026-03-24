@@ -26,7 +26,7 @@ jobs:
           script: |
             // This script calls the GitHub API to trigger a new run of the 'erddap data pull'
             console.log("Main workflow failed. Triggering a retry...");
-            github.rest.actions.create_workflow_dispatch({
+            github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'pull_erddap.yml', // Replace with your ACTUAL filename (e.g., main.yml)
