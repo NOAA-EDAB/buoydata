@@ -28,6 +28,15 @@ jobs:
           echo "RUNNER_IP=$RUNNER_IP" >> $GITHUB_ENV
         shell: bash
 
+      - name: Check ERDDAP Server Status
+        run: |
+          curl --retry 3 --retry-delay 20 --connect-timeout 10 \
+               -o /dev/null -s -w "%{http_code}" \
+               'https://coastwatch.pfeg.noaa.gov/erddap/index.html' | grep -q "200" || (echo "Server Down" && exit 1)
+#         Try 3 times with a 20-second delay before giving up and failing
+
+        shell: bash
+
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
@@ -42,6 +51,7 @@ jobs:
           sudo apt-get install libcurl4-openssl-dev libgit2-dev
 #          sudo apt-get install  libgdal-dev libcurl4-gnutls-dev libgit2-dev libudunits2-dev libharfbuzz-dev libfribidi-dev
         shell: bash
+
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2

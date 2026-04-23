@@ -28,7 +28,8 @@ the lazily loaded station description data provided with the package
 combines many more attributes (than
 [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
 
-*Date of most recent data pull: 2026-04-23*
+*Date of most recent data pull: 2026-04-21*
+
 
 ## Installation
 
@@ -67,8 +68,8 @@ website
 
 ## Contact
 
-| [andybeet](https://github.com/andybeet) |
-|----|
+| [andybeet](https://github.com/andybeet)                                                                        |
+|----------------------------------------------------------------------------------------------------------------|
 | [![andybeet avatar](https://avatars1.githubusercontent.com/u/22455149?s=100&v=4)](https://github.com/andybeet) |
 
 #### Legal disclaimer

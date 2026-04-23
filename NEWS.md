@@ -1,3 +1,47 @@
+# buoydata 1.0.4
+
+Data pull: April 21, 2026
+
+### Stations added 
+
+* 46453 - Backyard Buoys - Quinault North: [47.45,-124.43]. 2026-2026 (1 yrs).
+* CSIM3 - Castle Island (NOS) 8444069: [42.341,-71.012]. 2026-2026 (1 yrs).
+
+# buoydata 1.0.3
+
+Data pull: March 18, 2026
+
+### Stations added 
+
+* 42358 - FGBNMS Sofar Spotter: [27.874,-93.815]. 2026-2026 (1 yrs).
+
+# buoydata 1.0.2
+
+Data pull: January 22, 2026
+
+### Stations added 
+
+* 42027 - C23 - FLRACEP nWFS Buoy, 45m isobath: [29.045,-85.305]. 2025-2026 (2 yrs).
+* 42028 - C24 - FLRACEP nWFS Buoy, 58m isobath: [29.745,-86.227]. 2025-2026 (2 yrs).
+* BCFM2 - Brewerton Channel Range Front Light (8574831): [39.205,-76.524]. 2025-2026 (2 yrs).
+
+# buoydata 1.0.1
+
+Data pull: November 21, 2025
+
+### Stations added 
+
+* 42031 - West End CP, AL: [30.09,-88.212]. 2025-2025 (1 yrs).
+* 42357 - DISL Sofar Spotter: [30.092,-88.212]. 2025-2025 (1 yrs).
+* 45221 - North Lake Champlain: [44.756,-73.355]. 2025-2025 (1 yrs).
+* CXHN6 - Coxsackie, Hudson River (8518979): [42.353,-73.795]. 2025-2025 (1 yrs).
+* DCXA2 - Devils Cove: [58.351,-154.127]. 2025-2025 (1 yrs).
+* ELXA2 - Cape St. Elias: [59.798,-144.6]. 2025-2025 (1 yrs).
+* PAUA2 - ST PAUL MXAK, AK: [57.124,-170.271]. 2025-2025 (1 yrs).
+* SKDA2 - Skagway Ore Dock: [59.449,-135.331]. 2025-2025 (1 yrs).
+* WBXA2 - Womens Bay Cargo Pier: [57.729,-152.516]. 2025-2025 (1 yrs).
+* WFXA2 - Womens Bay Fuel Pier: [57.726,-152.519]. 2025-2025 (1 yrs).
+
 # buoydata 1.0.0
 
 NDBC data is pulled via a cron job and hosted on ERDDAP. The package now pulls from ERDDAP rather than scraping the NDBC site
