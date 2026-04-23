@@ -16,3 +16,5 @@ buoydata.Rproj
 ^\.github$
 ^doc$
 ^Meta$
+^[.]?air[.]toml$
+^\.vscode$
