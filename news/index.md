@@ -1,5 +1,16 @@
 # Changelog
 
+## buoydata 1.0.4
+
+Data pull: April 21, 2026
+
+#### Stations added
+
+- 46453 - Backyard Buoys - Quinault North: \[47.45,-124.43\]. 2026-2026
+  (1 yrs).
+- CSIM3 - Castle Island (NOS) 8444069: \[42.341,-71.012\]. 2026-2026 (1
+  yrs).
+
 ## buoydata 1.0.3
 
 Data pull: March 18, 2026
