@@ -10,6 +10,7 @@
 [![R-CMD-check](https://github.com/NOAA-EDAB/buoydata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/R-CMD-check.yaml)
 [![ERDDAP
 pull](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/pull_erddap.yml)
+[![format-check.yaml](https://github.com/NOAA-EDAB/buoydata/actions/workflows/format-check.yml/badge.svg)](https://github.com/NOAA-EDAB/buoydata/actions/workflows/format-check.yml)
 <!-- badges: end -->
 
 The goal of `buoydata` is to easily download and process buoy data
@@ -28,6 +29,7 @@ combines many more attributes (than
 [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
 
 *Date of most recent data pull: 2026-04-21*
+
 
 ## Installation
 
