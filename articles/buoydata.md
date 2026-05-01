@@ -1,6 +1,7 @@
 # buoydata
 
 ``` r
+
 library(buoydata)
 ```
 
@@ -12,6 +13,7 @@ such as the years of operation, the date/time of the last recorded
 measurement, and the owners of the buoy
 
 ``` r
+
 buoydata::buoy_data |> 
   dplyr::as_tibble()
 #> # A tibble: 1,332 × 17
@@ -42,6 +44,7 @@ variables can be found using the
 function
 
 ``` r
+
 buoydata::get_variables()
 ```
 
@@ -74,6 +77,7 @@ Find all buoys located between latitude \[41,43\] and longitude
 process data from a single buoy.
 
 ``` r
+
 buoydata::buoy_data |> 
   dplyr::filter(LAT > 41,LAT < 43) |> 
   dplyr::filter(LON > -71, LON < -69) |> 
@@ -81,12 +85,12 @@ buoydata::buoy_data |>
 #> # A tibble: 6 × 17
 #>   ID       Y1    YN nYEARS lastMeasurement       LAT   LON STATION_LOC     TTYPE
 #>   <chr> <dbl> <dbl>  <int> <dttm>              <dbl> <dbl> <chr>           <chr>
-#> 1 44013  1984  2026     43 2026-04-21 20:40:00  42.3 -70.7 BOSTON 16 NM E… 2.1-…
+#> 1 44013  1984  2026     43 2026-04-22 12:30:00  42.3 -70.7 BOSTON 16 NM E… 2.1-…
 #> 2 44018  2002  2024     21 2024-08-30 18:10:00  41.3 -69.3 CAPE COD - 9 N… 3-me…
 #> 3 44029  2004  2026     21 2026-04-21 05:00:00  42.5 -70.6 Buoy A01 - Mas… Moor…
-#> 4 BZBM3  2004  2026     23 2026-04-21 21:00:00  41.5 -70.7 8447930 - Wood… Wate…
+#> 4 BZBM3  2004  2026     23 2026-04-22 14:00:00  41.5 -70.7 8447930 - Wood… Wate…
 #> 5 IOSN3  1984  2025     42 2025-09-14 03:00:00  43.0 -70.6 Isle of Shoals… C-MA…
-#> 6 NTKM3  2005  2026     22 2026-04-21 21:48:00  41.3 -70.1 8449130 - Nant… Wate…
+#> 6 NTKM3  2005  2026     22 2026-04-22 14:00:00  41.3 -70.1 8449130 - Nant… Wate…
 #> # ℹ 8 more variables: TIMEZONE <chr>, OWNER <chr>, OWNERNAME <chr>,
 #> #   COUNTRY <chr>, HULL <chr>, PAYLOAD <chr>, FORECAST <chr>, NOTE <chr>
 ```
@@ -95,12 +99,14 @@ Lets pull the sea surface temperature (variable name, wtmp) from buoy
 44018 - CAPE COD - 9 NM North of Provincetown, MA
 
 ``` r
+
 buoy_44018 <- buoydata::get_buoy_data(buoyid="44018", var = "wtmp")
 ```
 
 Then plot the data
 
 ``` r
+
  p <- ggplot2::ggplot(buoy_44018) +
    ggplot2::geom_line(ggplot2::aes(x=time,y=wtmp)) + 
    ggplot2::ylab("Sea Surface Temp (Celcius)") +
