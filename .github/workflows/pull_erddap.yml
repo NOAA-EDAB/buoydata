@@ -118,7 +118,7 @@ jobs:
           subject: ERDDAP pull
           to: andrew.beet@noaa.gov
 
-          from: 'buoyData GitHub'
+          from: 'buoyData GitHub  <noreply@gamil.com>'
           envelope_from: ${{ secrets.MAIL_USERNAME }}
 
           #body: file://${{github.workspace}}/data-raw/datapull.txt
