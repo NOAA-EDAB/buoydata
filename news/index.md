@@ -1,5 +1,14 @@
 # Changelog
 
+## buoydata 1.0.5
+
+Data pull: May 19, 2026
+
+#### Stations added
+
+- BCTP1 - Beach 2 Tower: \[42.153,-80.131\]. 2026-2026 (1 yrs).
+- GRCM4 - GLRC Observatory: \[47.121,-88.545\]. 2026-2026 (1 yrs).
+
 ## buoydata 1.0.4
 
 Data pull: April 21, 2026
