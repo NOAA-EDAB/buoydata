@@ -1,3 +1,24 @@
+# buoydata 1.0.6
+
+Data pull: June 23, 2026
+
+### Stations added 
+
+* 44074 - Great Bay Buoy: [43.07,-70.86]. 2026-2026 (1 yrs).
+* 45217 - Wisconsin Point: [46.706,-91.985]. 2026-2026 (1 yrs).
+* 45220 - Dunkirk Buoy: [42.561,-79.432]. 2026-2026 (1 yrs).
+* TRTP1 - TREC Tower: [42.11,-80.154]. 2026-2026 (1 yrs).
+
+### Stations removed 
+
+* 44021 - Buoy D - New Meadows River: [43.782,-69.888]. 2006-2013 (5 yrs).
+* 44024 - Buoy N01 - Northeast Channel: [42.312,-65.927]. 2004-2021 (14 yrs).
+* 44031 - Buoy C0201 - Casco Bay: [43.57,-70.06]. 2004-2008 (5 yrs).
+* 44035 - Buoy J0201 - Cobscook Bay: [44.89,-67.02]. 2004-2008 (5 yrs).
+* 44037 - Buoy M01 - Jordan Basin: [43.484,-67.883]. 2004-2024 (19 yrs).
+* 44038 - Buoy L0102 - Scotian Shelf: [43.633,-66.55]. 2004-2008 (5 yrs).
+* GKYF1 - Garden Key, FL: [24.627,-82.872]. 2019-2024 (6 yrs).
+
 # buoydata 1.0.5
 
 Data pull: May 19, 2026
