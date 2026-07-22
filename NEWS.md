@@ -1,3 +1,23 @@
+# buoydata 1.0.7
+
+Data pull: July 22, 2026
+
+### Stations added 
+
+* 45190 - Sodus Point, NY: [43.282,-76.961]. 2026-2026 (1 yrs).
+* 45191 - Oak Orchard, NY: [43.388,-78.192]. 2026-2026 (1 yrs).
+* 45222 - Beach 2 Buoy: [42.126,-80.148]. 2026-2026 (1 yrs).
+* 45223 - Beach 6 Buoy: [42.144,-80.139]. 2026-2026 (1 yrs).
+* 52216 - Pikareej, Arno, Marshall Islands (282): [7.323,171.641]. 2026-2026 (1 yrs).
+* WLXA2 - Wales, AK: [65.616,-168.094]. 2026-2026 (1 yrs).
+
+### Stations removed 
+
+* CGCL1 - Cognac: [28.791,-89.056]. 2013-2015 (3 yrs).
+* CHDS1 - Strom Thurmond Dam, SC: [33.662,-82.2]. 2008-2022 (15 yrs).
+* CHLV2 - Chesapeake Light, VA: [36.91,-75.71]. 1984-2016 (33 yrs).
+* CLBF1 - Clam Bayou, FL: [27.736,-82.692]. 2017-2022 (6 yrs).
+
 # buoydata 1.0.6
 
 Data pull: June 23, 2026
