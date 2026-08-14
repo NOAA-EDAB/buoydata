@@ -1,10 +1,10 @@
 pandoc: 3.8.3
-pkgdown: 2.2.0
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   buoydata: buoydata.html
   buoymap: buoymap.html
-last_built: 2026-06-26T13:57Z
+last_built: 2026-08-14T13:17Z
 urls:
   reference: https://noaa-edab.github.io/buoydata/reference
   article: https://noaa-edab.github.io/buoydata/articles
