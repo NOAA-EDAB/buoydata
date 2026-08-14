@@ -38,7 +38,7 @@ jobs:
         shell: bash
 
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -106,7 +106,7 @@ jobs:
 
       # Send email indicating if anything has changed
       - name: Send email
-        uses: dawidd6/action-send-mail@v17
+        uses: dawidd6/action-send-mail@v18
 
         with:
           server_address: smtp.gmail.com
@@ -118,7 +118,7 @@ jobs:
           subject: ERDDAP pull
           to: andrew.beet@noaa.gov
 
-          from: 'buoyData GitHub'
+          from: 'buoyData GitHub  <noreply@gamil.com>'
           envelope_from: ${{ secrets.MAIL_USERNAME }}
 
           #body: file://${{github.workspace}}/data-raw/datapull.txt

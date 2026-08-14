@@ -1,3 +1,53 @@
+# buoydata 1.0.7
+
+Data pull: July 22, 2026
+
+### Stations added 
+
+* 45190 - Sodus Point, NY: [43.282,-76.961]. 2026-2026 (1 yrs).
+* 45191 - Oak Orchard, NY: [43.388,-78.192]. 2026-2026 (1 yrs).
+* 45222 - Beach 2 Buoy: [42.126,-80.148]. 2026-2026 (1 yrs).
+* 45223 - Beach 6 Buoy: [42.144,-80.139]. 2026-2026 (1 yrs).
+* 52216 - Pikareej, Arno, Marshall Islands (282): [7.323,171.641]. 2026-2026 (1 yrs).
+* WLXA2 - Wales, AK: [65.616,-168.094]. 2026-2026 (1 yrs).
+
+### Stations removed 
+
+* CGCL1 - Cognac: [28.791,-89.056]. 2013-2015 (3 yrs).
+* CHDS1 - Strom Thurmond Dam, SC: [33.662,-82.2]. 2008-2022 (15 yrs).
+* CHLV2 - Chesapeake Light, VA: [36.91,-75.71]. 1984-2016 (33 yrs).
+* CLBF1 - Clam Bayou, FL: [27.736,-82.692]. 2017-2022 (6 yrs).
+
+# buoydata 1.0.6
+
+Data pull: June 23, 2026
+
+### Stations added 
+
+* 44074 - Great Bay Buoy: [43.07,-70.86]. 2026-2026 (1 yrs).
+* 45217 - Wisconsin Point: [46.706,-91.985]. 2026-2026 (1 yrs).
+* 45220 - Dunkirk Buoy: [42.561,-79.432]. 2026-2026 (1 yrs).
+* TRTP1 - TREC Tower: [42.11,-80.154]. 2026-2026 (1 yrs).
+
+### Stations removed 
+
+* 44021 - Buoy D - New Meadows River: [43.782,-69.888]. 2006-2013 (5 yrs).
+* 44024 - Buoy N01 - Northeast Channel: [42.312,-65.927]. 2004-2021 (14 yrs).
+* 44031 - Buoy C0201 - Casco Bay: [43.57,-70.06]. 2004-2008 (5 yrs).
+* 44035 - Buoy J0201 - Cobscook Bay: [44.89,-67.02]. 2004-2008 (5 yrs).
+* 44037 - Buoy M01 - Jordan Basin: [43.484,-67.883]. 2004-2024 (19 yrs).
+* 44038 - Buoy L0102 - Scotian Shelf: [43.633,-66.55]. 2004-2008 (5 yrs).
+* GKYF1 - Garden Key, FL: [24.627,-82.872]. 2019-2024 (6 yrs).
+
+# buoydata 1.0.5
+
+Data pull: May 19, 2026
+
+### Stations added 
+
+* BCTP1 - Beach 2 Tower: [42.153,-80.131]. 2026-2026 (1 yrs).
+* GRCM4 - GLRC Observatory: [47.121,-88.545]. 2026-2026 (1 yrs).
+
 # buoydata 1.0.4
 
 Data pull: April 21, 2026
