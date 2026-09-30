@@ -28,7 +28,7 @@ the lazily loaded station description data provided with the package
 combines many more attributes (than
 [rnoaa](https://github.com/ropensci/rnoaa)) by which to filter.
 
-*Date of most recent data pull: 2026-09-15*
+*Date of most recent data pull: 2026-09-30*
 
 ## Installation
 
