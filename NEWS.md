@@ -1,3 +1,16 @@
+# buoydata 1.0.8
+
+Data pull: October 20, 2026
+
+### Stations added 
+
+* 46286 - Avila Beach Nearshore, CA (285): [35.164,-120.737]. 2026-2026 (1 yrs).
+* CGCL1 - Cognac: [28.791,-89.056]. 2013-2015 (3 yrs).
+* CHDS1 - Strom Thurmond Dam, SC: [33.662,-82.2]. 2008-2022 (15 yrs).
+* CHLV2 - Chesapeake Light, VA: [36.91,-75.71]. 1984-2016 (33 yrs).
+* CLBF1 - Clam Bayou, FL: [27.736,-82.692]. 2017-2022 (6 yrs).
+* PHCT2 - Port Aransas, TX, Horace Caldwell Pier (99999291): [27.826,-97.051]. 2026-2026 (1 yrs).
+
 # buoydata 1.0.7
 
 Data pull: July 22, 2026
